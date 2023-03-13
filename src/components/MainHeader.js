@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import LogoImg from "../assets/img/logo.png";
-import { StyledContainer } from "../shared/components";
+import { StyledContainer } from "../shared/styledComponents";
 import { FontBody, FontBodyBold, FontCaption } from "../shared/fonts";
 import NavigationMenu from "./NavigationMenu";
 
@@ -34,7 +34,7 @@ const LogoHeader = () => {
       <StyledLogoDescription>
         <FontBody>
           <FontBodyBold>ОФИЦИАЛЬНЫЙ САЙТ</FontBodyBold>
-          <br /> LIGHTENGINEERING В KZ
+          <br /> В KZ
         </FontBody>
       </StyledLogoDescription>
     </>
@@ -76,18 +76,32 @@ const CallButton = () => {
   );
 };
 
-const StyledHeaderContainer = styled(StyledContainer)`
+const StyledHeaderContainer = styled.div`
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+`;
+
+const StyledHeader = styled(StyledContainer)`
   display: flex;
   height: 90px;
+  width: 100%;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Header = () => {
   return (
     <StyledHeaderContainer>
-      <LogoHeader />
-      <NavigationMenu />
-      <CallButton />
+      <StyledHeader>
+        <LogoHeader />
+        <NavigationMenu />
+        <CallButton />
+      </StyledHeader>
     </StyledHeaderContainer>
   );
 };

@@ -15,6 +15,9 @@ import RalewaySemiBold from "../assets/font/Raleway/Raleway-SemiBold.ttf";
 import RalewayMedium from "../assets/font/Raleway/Raleway-Medium.ttf";
 
 const FontGlobalStyles = createGlobalStyle`
+body {
+  font-family: 'Raleway';
+}
 @font-face {
     font-family: 'Druk Cyr';
     src: url(${DrukCyrSuper}) format('truetype');
@@ -123,6 +126,19 @@ const fontDrukCyr = styled(fontDefault)`
 const FontCaption = styled(fontRaleway)`
   font-size: 14px;
 `;
+const FontFootnote = styled(fontRaleway)`
+  font-size: 12px;
+`;
+
+const FontHeadline = styled(fontRaleway)`
+  font-size: 18px;
+
+  font-weight: 500;
+`;
+const FontHeadlineBold = styled(fontRaleway)`
+  font-size: 18px;
+  font-weight: 600;
+`;
 
 const FontBody = styled(fontRaleway)``;
 const FontBodyBold = styled(fontRaleway)`
@@ -130,10 +146,11 @@ const FontBodyBold = styled(fontRaleway)`
 `;
 
 const FontHeader = styled(fontDrukCyr)`
-  font-family: "Druk Cyr";
   font-size: 100px;
 `;
-const FontTitle = styled(fontDrukCyr)``;
+const FontTitle = styled(fontDrukCyr)`
+  font-size: 60px;
+`;
 
 export {
   FontGlobalStyles,
@@ -142,4 +159,7 @@ export {
   FontBodyBold,
   FontTitle,
   FontHeader,
+  FontFootnote,
+  FontHeadline,
+  FontHeadlineBold,
 };
