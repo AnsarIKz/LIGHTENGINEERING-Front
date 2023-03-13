@@ -1,4 +1,4 @@
-import Header from "../components/MainHeader";
+import Header from "../components/Header";
 import styled from "styled-components";
 import mainImg from "../assets/img/main.png";
 import {
@@ -17,6 +17,10 @@ import {
 import product1 from "../assets/img/introductionproduct1.png";
 import product2 from "../assets/img/introductionproduct2.png";
 import product3 from "../assets/img/introductionproduct3.png";
+
+import produced1 from "../assets/img/produced1.png";
+import produced2 from "../assets/img/produced2.png";
+import produced3 from "../assets/img/produced3.png";
 
 import section2 from "../assets/img/section2bg.png";
 
@@ -112,7 +116,7 @@ const IntroductionSection = (props) => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <FontHeadlineBold style={{ marginTop: 60 }} color="black">
+            <FontHeadlineBold style={{ marginTop: 90 }} color="black">
               Опоры и светильники
               <br /> на любой бюджет
             </FontHeadlineBold>
@@ -126,7 +130,7 @@ const IntroductionSection = (props) => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <FontHeadlineBold style={{ marginTop: 60 }} color="black">
+            <FontHeadlineBold style={{ marginTop: 90 }} color="black">
               Отгрузка со склада
               <br />
               сразу же в день оплаты
@@ -141,7 +145,7 @@ const IntroductionSection = (props) => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <FontHeadlineBold style={{ marginTop: 60 }} color="black">
+            <FontHeadlineBold style={{ marginTop: 90 }} color="black">
               Доставка в любую точку
               <br />
               СНГ по выгодной цене
@@ -172,6 +176,8 @@ const OurProduces = () => {
       style={{
         backgroundImage: `url(${section2})`,
         backgroundRepeat: "no-repeat",
+        // backgroundPosition: "bottom",
+        backgroundSize: "cover",
       }}
     >
       <StyledProducesContainer>
@@ -180,11 +186,42 @@ const OurProduces = () => {
         </FontTitle>
         <FontHeadline color="black">Самые популярные товары</FontHeadline>
 
-        <StyledProducesList>
-          <StyledProduced></StyledProduced>
-          <StyledProduced></StyledProduced>
-          <StyledProduced></StyledProduced>
-          <StyledProduced></StyledProduced>
+        <StyledProducesList style={{ marginTop: 40 + "px" }}>
+          <StyledProduced
+            style={{
+              marginRight: 40,
+              backgroundImage: `url(${produced1})`,
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "contain",
+            }}
+          ></StyledProduced>
+          <StyledProduced
+            style={{
+              marginRight: 40,
+              backgroundImage: `url(${produced2})`,
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "contain",
+            }}
+          ></StyledProduced>
+          <StyledProduced
+            style={{
+              marginRight: 40,
+              backgroundImage: `url(${produced3})`,
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "contain",
+            }}
+          ></StyledProduced>
+          <StyledProduced
+            style={{
+              backgroundImage: `url(${produced1})`,
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "contain",
+            }}
+          ></StyledProduced>
         </StyledProducesList>
       </StyledProducesContainer>
     </StyledSection>

@@ -8,6 +8,7 @@ const StyledLogoBox = styled.div`
   height: 90px;
   width: 110px;
   display: flex;
+
   justify-content: center;
   align-items: center;
   background-color: white;
@@ -78,6 +79,7 @@ const CallButton = () => {
 
 const StyledHeaderContainer = styled.div`
   position: fixed;
+  flex-direction: row;
   display: flex;
   align-items: center;
   justify-content: center;
