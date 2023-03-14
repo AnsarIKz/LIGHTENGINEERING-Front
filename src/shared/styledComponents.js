@@ -7,6 +7,7 @@ export const StyledContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
 `;
 
 export const StyledInput = styled.input`
@@ -16,6 +17,8 @@ export const StyledInput = styled.input`
   box-sizing: border-box;
   flex: 1;
   min-height: 80px;
+  max-height: 80px;
+
   border: 0px;
   border-radius: 5px;
   ${(props) =>
@@ -31,4 +34,9 @@ export const StyledSection = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
+`;
+
+export const StyledCard = styled.div`
+  width: 360px;
 `;

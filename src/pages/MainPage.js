@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import styled from "styled-components";
 import mainImg from "../assets/img/main.png";
 import {
+  StyledCard,
   StyledContainer,
   StyledInput,
   StyledSection,
@@ -12,6 +13,7 @@ import {
   FontHeadline,
   FontHeadlineBold,
   FontTitle,
+  FontTitle2,
 } from "../shared/fonts";
 
 import product1 from "../assets/img/introductionproduct1.png";
@@ -23,6 +25,14 @@ import produced2 from "../assets/img/produced2.png";
 import produced3 from "../assets/img/produced3.png";
 
 import section2 from "../assets/img/section2bg.png";
+import section3 from "../assets/img/section3bg.png";
+import section4 from "../assets/img/section4bg.png";
+import section5 from "../assets/img/section5bg.png";
+
+import catalogbg from "../assets/img/catalogbg.png";
+import catalog from "../assets/img/catalog1.png";
+
+import instagrammockup from "../assets/img/instagrammockup.png";
 
 const StyledIntroductionSection = styled.div`
   /* min-height: 870px; */
@@ -138,8 +148,6 @@ const IntroductionSection = (props) => {
           </StyledIntroductionProduct>
           <StyledIntroductionProduct
             style={{
-              marginLeft: 40,
-              marginRight: 40,
               backgroundImage: `url(${product3})`,
               backgroundPosition: "center top 10px",
               backgroundRepeat: "no-repeat",
@@ -170,6 +178,21 @@ const StyledProduced = styled.div`
   width: 260px;
 `;
 
+const StyledCatalog = styled.div`
+  display: flex;
+  background: url(${catalogbg});
+  width: 100%;
+  height: 260px;
+  margin-top: 40px;
+  justify-content: space-around;
+  align-items: center;
+`;
+const StyledCatalogCard = styled.div`
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+`;
+
 const OurProduces = () => {
   return (
     <StyledSection
@@ -185,7 +208,6 @@ const OurProduces = () => {
           ЧТО МЫ ПРОИЗВОДИМ<FontTitle color="primary">?</FontTitle>
         </FontTitle>
         <FontHeadline color="black">Самые популярные товары</FontHeadline>
-
         <StyledProducesList style={{ marginTop: 40 + "px" }}>
           <StyledProduced
             style={{
@@ -223,7 +245,199 @@ const OurProduces = () => {
             }}
           ></StyledProduced>
         </StyledProducesList>
+        <StyledCatalog>
+          <StyledCatalogCard>
+            <FontHeadline>
+              ПЕРЕЙДИТЕ В КАТАЛОГ ЧТОБЫ УВИДЕТЬ ВСЕ ТОВАРЫ
+            </FontHeadline>
+            <StyledInput
+              style={{ marginTop: 12 }}
+              value={"Перейти в каталог"}
+              type="button"
+            />
+          </StyledCatalogCard>
+          <StyledCatalogCard>
+            <img style={{ height: "100%" }} src={catalog} />
+          </StyledCatalogCard>
+        </StyledCatalog>
       </StyledProducesContainer>
+    </StyledSection>
+  );
+};
+
+const StyledWhyWeWrapper = styled.div`
+  display: flex;
+  margin: 40px 0px 0px;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+const StyledWhyWeCard = styled(StyledCard)`
+  background: white;
+  height: 220px;
+  width: 360px;
+`;
+const WhyWe = () => {
+  return (
+    <StyledSection
+      style={{
+        backgroundImage: `url(${section3})`,
+        backgroundRepeat: "no-repeat",
+        // backgroundPosition: "bottom",
+        backgroundSize: "cover",
+      }}
+    >
+      <StyledContainer>
+        <FontTitle>
+          ПОЧЕМУ СТОИТ ВЫБРАТЬ НАС<FontTitle color="primary">?</FontTitle>
+        </FontTitle>
+        <StyledWhyWeWrapper>
+          <StyledWhyWeCard></StyledWhyWeCard>
+          <StyledWhyWeCard></StyledWhyWeCard>
+          <StyledWhyWeCard></StyledWhyWeCard>
+        </StyledWhyWeWrapper>
+        <StyledWhyWeWrapper>
+          <StyledWhyWeCard></StyledWhyWeCard>
+          <StyledWhyWeCard></StyledWhyWeCard>
+          <StyledWhyWeCard></StyledWhyWeCard>
+        </StyledWhyWeWrapper>
+      </StyledContainer>
+    </StyledSection>
+  );
+};
+
+const StyledFormWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`;
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #232323;
+  width: 460px;
+  text-align: center;
+  padding: 40px 0;
+  border-radius: 1px;
+`;
+
+const StyledFormInput = styled(StyledInput)`
+  width: 340px;
+`;
+
+const ConsultingForm = () => {
+  return (
+    <StyledSection
+      style={{
+        backgroundImage: `url(${section4})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      <StyledContainer>
+        <StyledFormWrapper>
+          <div></div>
+          <StyledForm>
+            <FontTitle2 style={{ marginBottom: 12 }}>
+              ПОЛУЧИТЕ
+              <FontTitle2 color="primary"> БЕСПЛАТНУЮ</FontTitle2>
+              <br></br> КОНСУЛЬТАЦИЮ
+            </FontTitle2>
+            <FontFootnote style={{ marginBottom: 20 }}>
+              Оставьте заявку и наш менеджер свяжется с вами!{" "}
+            </FontFootnote>
+            <StyledFormInput placeholder="Валерий Игубин"></StyledFormInput>
+            <StyledFormInput
+              placeholder="+7 705 772 88 40"
+              style={{ marginTop: 20, marginBottom: 20 }}
+            ></StyledFormInput>
+            <StyledFormInput
+              value={"Оставить заявку на консультацию"}
+              type="button"
+            ></StyledFormInput>
+          </StyledForm>
+        </StyledFormWrapper>
+      </StyledContainer>
+    </StyledSection>
+  );
+};
+
+const StyledOurProjectsWrapper = styled.div`
+  display: flex;
+  margin: 40px 0px 0px;
+  width: 100%;
+  justify-content: space-between;
+`;
+const StyledOurProjectCard = styled(StyledCard)`
+  width: 360px;
+  height: 225px;
+  background: black;
+`;
+
+const StyledInstagram = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 140px;
+`;
+
+const StyledInstagramTitle = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledInstagramMockup = styled.img`
+  margin-left: 24px;
+`;
+
+const StyledInstagramButton = styled(StyledInput)`
+  width: 340px;
+  margin-top: 40px;
+`;
+
+const OurInstagram = () => {
+  return (
+    <StyledContainer>
+      <StyledInstagram>
+        <StyledInstagramTitle>
+          <FontTitle>
+            ПОДПИСЫВАЙТЕСЬ НА НАШ INSTAGRAM
+            <br />И УЗНАВАЙТЕ О НОВОСТЯХ ПЕРВЫМИ!
+          </FontTitle>
+          <StyledInstagramButton value={"ПЕРЕЙТИ В ИНСТАГРАМ"} type="button" />
+        </StyledInstagramTitle>
+        <StyledInstagramMockup src={instagrammockup} />
+      </StyledInstagram>
+    </StyledContainer>
+  );
+};
+
+const OurProjects = () => {
+  return (
+    <StyledSection
+      style={{
+        backgroundImage: `url(${section5})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      <StyledContainer>
+        <FontTitle>
+          ПРОЕКТЫ НАД КОТОРЫМИ <FontTitle color="primary">МЫ</FontTitle>{" "}
+          РАБОТАЛИ
+        </FontTitle>
+        <StyledOurProjectsWrapper>
+          <StyledOurProjectCard></StyledOurProjectCard>
+          <StyledOurProjectCard></StyledOurProjectCard>
+          <StyledOurProjectCard></StyledOurProjectCard>
+        </StyledOurProjectsWrapper>
+        <StyledOurProjectsWrapper>
+          <StyledOurProjectCard></StyledOurProjectCard>
+          <StyledOurProjectCard></StyledOurProjectCard>
+          <StyledOurProjectCard></StyledOurProjectCard>
+        </StyledOurProjectsWrapper>
+      </StyledContainer>
+      <OurInstagram></OurInstagram>
     </StyledSection>
   );
 };
@@ -234,6 +448,9 @@ const MainPage = () => {
       <Header />
       <IntroductionSection></IntroductionSection>
       <OurProduces></OurProduces>
+      <WhyWe></WhyWe>
+      <ConsultingForm></ConsultingForm>
+      <OurProjects></OurProjects>
     </>
   );
 };

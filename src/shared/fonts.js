@@ -151,6 +151,9 @@ const FontHeader = styled(fontDrukCyr)`
 const FontTitle = styled(fontDrukCyr)`
   font-size: 60px;
 `;
+const FontTitle2 = styled(fontDrukCyr)`
+  font-size: 40px;
+`;
 
 export {
   FontGlobalStyles,
@@ -162,4 +165,5 @@ export {
   FontFootnote,
   FontHeadline,
   FontHeadlineBold,
+  FontTitle2,
 };
