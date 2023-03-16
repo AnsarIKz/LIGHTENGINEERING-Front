@@ -3,15 +3,35 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import ErrorPage from "./components/ErrorPage";
+import ErrorPage from "./pages/ErrorPage";
 import MainPage from "./pages/MainPage";
 import { FontGlobalStyles } from "./shared/fonts";
+import CatalogPage from "./pages/CatalogPage";
+import BlogPage from "./pages/BlogPage";
+import UsefulPage from "./pages/UsefulPage";
+import ProjectPage from "./pages/ProjectsPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainPage />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/catalog",
+    element: <CatalogPage />,
+  },
+  {
+    path: "/blog",
+    element: <BlogPage />,
+  },
+  {
+    path: "/useful",
+    element: <UsefulPage />,
+  },
+  {
+    path: "/projects",
+    element: <ProjectPage />,
   },
 ]);
 
