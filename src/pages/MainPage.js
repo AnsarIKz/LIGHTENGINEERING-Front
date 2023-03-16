@@ -443,6 +443,14 @@ const OurProjects = () => {
   );
 };
 
+const OurReviews = () => {
+  return (
+    <StyledSection>
+      <StyledContainer></StyledContainer>
+    </StyledSection>
+  );
+};
+
 const MainPage = () => {
   return (
     <>
@@ -452,6 +460,7 @@ const MainPage = () => {
       <WhyWe></WhyWe>
       <ConsultingForm></ConsultingForm>
       <OurProjects></OurProjects>
+      <OurReviews></OurReviews>
       <Footer />
     </>
   );
