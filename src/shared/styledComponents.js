@@ -39,4 +39,35 @@ export const StyledSection = styled.div`
 
 export const StyledCard = styled.div`
   width: 360px;
+  border-radius: 1px;
 `;
+
+const StyledEntityImage = styled.div`
+  margin: 40px 40px 40px 60px;
+  height: 285px;
+  width: 300px;
+  border-radius: 1px;
+  background: linear-gradient(269.73deg, #ffc10e 8.84%, #ffcf45 90.86%), #d9d9d9;
+`;
+
+const StyledEntity = styled.div`
+  display: flex;
+  background: #232323;
+  width: 100%;
+  border-radius: 1px;
+`;
+
+const StyledEntityDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+`;
+
+export const Entity = ({ created_at, title, subtitle }) => {
+  return (
+    <StyledEntity>
+      <StyledEntityImage></StyledEntityImage>
+      <StyledEntityDescription></StyledEntityDescription>
+    </StyledEntity>
+  );
+};

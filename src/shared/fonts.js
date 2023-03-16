@@ -126,6 +126,12 @@ const fontDrukCyr = styled(fontDefault)`
 const FontCaption = styled(fontRaleway)`
   font-size: 14px;
 `;
+
+const FontCaptionBold = styled(fontRaleway)`
+  font-size: 14px;
+  font-weight: 600;
+`;
+
 const FontFootnote = styled(fontRaleway)`
   font-size: 12px;
 `;
@@ -166,4 +172,5 @@ export {
   FontHeadline,
   FontHeadlineBold,
   FontTitle2,
+  FontCaptionBold,
 };
