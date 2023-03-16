@@ -33,6 +33,7 @@ import catalogbg from "../assets/img/catalogbg.png";
 import catalog from "../assets/img/catalog1.png";
 
 import instagrammockup from "../assets/img/instagrammockup.png";
+import Footer from "../components/Footer";
 
 const StyledIntroductionSection = styled.div`
   /* min-height: 870px; */
@@ -451,6 +452,7 @@ const MainPage = () => {
       <WhyWe></WhyWe>
       <ConsultingForm></ConsultingForm>
       <OurProjects></OurProjects>
+      <Footer />
     </>
   );
 };

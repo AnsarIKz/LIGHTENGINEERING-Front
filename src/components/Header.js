@@ -3,6 +3,7 @@ import LogoImg from "../assets/img/logo.png";
 import { StyledContainer } from "../shared/styledComponents";
 import { FontBody, FontBodyBold, FontCaption } from "../shared/fonts";
 import NavigationMenu from "./NavigationMenu";
+import { useNavigate } from "react-router-dom";
 
 const StyledLogoBox = styled.div`
   height: 90px;
@@ -14,6 +15,7 @@ const StyledLogoBox = styled.div`
   background-color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  cursor: pointer;
 `;
 
 const StyledLogoImg = styled.img`
@@ -24,17 +26,21 @@ const StyledLogoDescription = styled.span`
   display: flex;
   align-self: center;
   margin-left: 30px;
+  cursor: pointer;
 `;
 
 const LogoHeader = () => {
+  const navigation = useNavigate();
   return (
     <>
-      <StyledLogoBox>
+      <StyledLogoBox onClick={() => navigation("/")}>
         <StyledLogoImg src={LogoImg} />
       </StyledLogoBox>
       <StyledLogoDescription>
         <FontBody>
-          <FontBodyBold>ОФИЦИАЛЬНЫЙ САЙТ</FontBodyBold>
+          <FontBodyBold onClick={() => navigation("/")}>
+            ОФИЦИАЛЬНЫЙ САЙТ
+          </FontBodyBold>
           <br /> В KZ
         </FontBody>
       </StyledLogoDescription>
