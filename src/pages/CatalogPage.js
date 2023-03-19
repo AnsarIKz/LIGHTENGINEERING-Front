@@ -46,9 +46,11 @@ const Catalog = observer(() => {
   return (
     <StyledSection
       style={{
+        backgroundColor: "#232323",
         backgroundImage: `url(${bg})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       <StyledCatalogContainer>

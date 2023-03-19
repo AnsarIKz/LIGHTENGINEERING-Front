@@ -207,8 +207,10 @@ const ProductPage = () => {
       </CommonIntroduction>
       <StyledSection
         style={{
+          backgroundColor: "#232323",
           backgroundImage: `url(${bg})`,
           backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
           backgroundSize: "cover",
         }}
       >
