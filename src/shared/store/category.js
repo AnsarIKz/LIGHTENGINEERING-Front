@@ -11,11 +11,11 @@ class CategoryStore {
     this.fetchCatalog();
   }
 
-  async fetchCatalog(node = null) {
+  async fetchCatalog(node = 0) {
     this.isLoading = true;
     try {
       let response;
-      if (node === null) {
+      if (+node === 0) {
         console.log(node);
         response = await API.get("catalog/");
         this.navigation = [];

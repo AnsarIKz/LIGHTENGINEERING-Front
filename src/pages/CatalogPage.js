@@ -7,6 +7,7 @@ import { StyledContainer, StyledSection } from "../shared/styledComponents";
 import styled from "styled-components";
 import category from "../shared/store/category";
 import { observer } from "mobx-react-lite";
+import { useNavigate, useParams } from "react-router-dom";
 
 const StyledCatalogContainer = styled(StyledContainer)`
   display: grid;
@@ -23,6 +24,10 @@ const StyledCatalog = styled.div`
 `;
 
 const Catalog = observer(() => {
+  const { node } = useParams();
+  useEffect(() => {
+    category.fetchCatalog(node);
+  }, [node]);
   return (
     <StyledSection>
       <StyledCatalogContainer>
@@ -36,13 +41,16 @@ const Catalog = observer(() => {
 });
 
 const CatalogNavigation = () => {
-  let reverseNavigation = [...category.navigation].reverse(); // копируем массив и изменяем порядок элементов на обратный
-  function handleClick(id = null) {
-    category.fetchCatalog(id);
+  const navigation = useNavigate();
+  function handleClick(id = 0) {
+    navigation(`/catalog/${id}`);
   }
+
+  let reverseNavigation = [...category.navigation].reverse(); // копируем массив и изменяем порядок элементов на обратный
+
   return (
     <div style={{ gridColumn: "1 / -1", cursor: "pointer" }}>
-      <FontBodyBold onClick={() => handleClick(null)} color="black">
+      <FontBodyBold onClick={() => handleClick()} color="black">
         Каталог /
       </FontBodyBold>
       {reverseNavigation.map((nav, index, array) => {
@@ -71,11 +79,12 @@ const CatalogNavigation = () => {
 };
 
 const CatalogEntity = ({ data: { id, name, is_product } }) => {
+  const navigation = useNavigate();
   function handleClick() {
     console.log(id);
     if (is_product) {
     } else {
-      category.fetchCatalog(id);
+      navigation(`/catalog/${id}`);
     }
   }
   return (
@@ -86,21 +95,6 @@ const CatalogEntity = ({ data: { id, name, is_product } }) => {
 };
 
 const CatalogPage = () => {
-  const [categories, setCategories] = useState([]);
-  const [isReady, setReady] = useState(false);
-
-  useEffect(() => {
-    if (!isReady) {
-      API.get("catalog/")
-        .then((response) => setCategories(response.data))
-        .catch((error) => console.error(error))
-        .finally(() => setReady(true));
-    }
-  }, []);
-
-  if (!isReady) {
-    return null;
-  }
   return (
     <>
       <CommonIntroduction>

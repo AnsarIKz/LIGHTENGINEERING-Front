@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import CommonIntroduction from "../components/CommonIntroduction";
 import Footer from "../components/Footer";
 import { FontHeader } from "../shared/fonts";
@@ -6,8 +7,14 @@ import {
   StyledContainer,
   StyledSection,
 } from "../shared/styledComponents";
+import product from "../shared/store/product";
+import { useParams } from "react-router-dom";
 
 const ProductDescription = () => {
+  let { productId } = useParams();
+  useEffect(() => {
+    product.fetchProduct(id);
+  }, []);
   return <></>;
 };
 
@@ -15,8 +22,7 @@ const ProductPage = () => {
   return (
     <>
       <CommonIntroduction>
-        <FontHeader>ПОЛЕЗНОЕ</FontHeader>
-        <FontHeader color="primary">ПРО СВЕТ</FontHeader>
+        <FontHeader>КАТАЛОГ</FontHeader>
       </CommonIntroduction>
       <StyledSection>
         <StyledContainer>
