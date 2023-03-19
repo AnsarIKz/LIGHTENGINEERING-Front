@@ -57,7 +57,7 @@ const Footer = () => {
           <FontCaptionBold onClick={() => navigation("/contacts")}>
             Контакты
           </FontCaptionBold>
-          <FontCaptionBold>Экспорт</FontCaptionBold>
+          <FontCaptionBold>...</FontCaptionBold>
         </StyledFooterChapter>
         <StyledFooterChapter></StyledFooterChapter>
         <StyledFooterChapter style={{ textAlign: "right" }}>

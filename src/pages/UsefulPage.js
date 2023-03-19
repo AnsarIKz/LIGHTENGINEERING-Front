@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import CommonIntroduction from "../components/CommonIntroduction";
 import Footer from "../components/Footer";
 import { FontHeader } from "../shared/fonts";
@@ -6,6 +7,13 @@ import {
   StyledContainer,
   StyledSection,
 } from "../shared/styledComponents";
+import usefulList from "../shared/store/usefulList";
+
+const UsefulList = observer(() => {
+  return usefulList.data.map((entity) => {
+    return <Entity {...entity} />;
+  });
+});
 
 const UsefulPage = () => {
   return (
@@ -16,7 +24,7 @@ const UsefulPage = () => {
       </CommonIntroduction>
       <StyledSection>
         <StyledContainer>
-          <Entity />
+          <UsefulList />
         </StyledContainer>
       </StyledSection>
       <Footer />

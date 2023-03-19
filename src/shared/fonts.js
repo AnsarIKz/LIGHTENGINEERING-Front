@@ -137,11 +137,21 @@ const FontFootnote = styled(fontRaleway)`
 `;
 
 const FontHeadline = styled(fontRaleway)`
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 500;
+`;
+const FontHeadlineBold = styled(fontRaleway)`
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+`;
+const FontHeadline2 = styled(fontRaleway)`
   font-size: 18px;
 
   font-weight: 500;
 `;
-const FontHeadlineBold = styled(fontRaleway)`
+const FontHeadline2Bold = styled(fontRaleway)`
   font-size: 18px;
   font-weight: 600;
 `;
@@ -153,12 +163,15 @@ const FontBodyBold = styled(fontRaleway)`
 
 const FontHeader = styled(fontDrukCyr)`
   font-size: 100px;
+  text-transform: uppercase;
 `;
 const FontTitle = styled(fontDrukCyr)`
   font-size: 60px;
+  text-transform: uppercase;
 `;
 const FontTitle2 = styled(fontDrukCyr)`
   font-size: 40px;
+  text-transform: uppercase;
 `;
 
 export {
@@ -173,4 +186,6 @@ export {
   FontHeadlineBold,
   FontTitle2,
   FontCaptionBold,
+  FontHeadline2,
+  FontHeadline2Bold,
 };

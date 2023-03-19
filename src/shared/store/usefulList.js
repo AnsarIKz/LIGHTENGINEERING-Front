@@ -2,10 +2,7 @@ import { runInAction, makeAutoObservable } from "mobx";
 import API from "../API";
 
 class UsefulStore {
-  list = [];
-  detail = {};
-
-  isDetailPage = false;
+  data = [];
   isLoading = false;
 
   constructor() {
@@ -13,15 +10,10 @@ class UsefulStore {
     this.fetchUseful();
   }
 
-  async fetchUseful(node = null) {
+  async fetchUseful() {
     this.isLoading = true;
     try {
-      let response;
-      if (node === null) {
-        response = await API.get("useful/");
-      } else {
-        response = await API.get(`useful/${node}/`);
-      }
+      let response = await API.get("useful/");
       runInAction(() => {
         this.data = response.data;
         this.isLoading = false;
@@ -35,4 +27,4 @@ class UsefulStore {
   }
 }
 
-export default new ProjectsStore();
+export default new UsefulStore();

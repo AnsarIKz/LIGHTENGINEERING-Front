@@ -1,4 +1,11 @@
 import styled from "styled-components";
+import {
+  FontBody,
+  FontFootnote,
+  FontHeadline,
+  FontHeadlineBold,
+} from "./fonts";
+import { useNavigate } from "react-router-dom";
 
 export const StyledContainer = styled.div`
   max-width: 1160px;
@@ -45,9 +52,9 @@ export const StyledCard = styled.div`
 `;
 
 const StyledEntityImage = styled.div`
-  margin: 40px 40px 40px 60px;
+  margin: 40px 0px 40px 60px;
   height: 285px;
-  width: 300px;
+  min-width: 300px;
   border-radius: 1px;
   background: linear-gradient(269.73deg, #ffc10e 8.84%, #ffcf45 90.86%), #d9d9d9;
 `;
@@ -62,14 +69,53 @@ const StyledEntity = styled.div`
 const StyledEntityDescription = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 12px;
+  padding: 40px;
+  box-sizing: border-box;
+  justify-content: space-between;
 `;
 
-export const Entity = ({ created_at, title, subtitle }) => {
+const months = [
+  "Янв",
+  "Фев",
+  "Мар",
+  "Апр",
+  "Май",
+  "Июн",
+  "Июл",
+  "Авг",
+  "Сен",
+  "Окт",
+  "Ноя",
+  "Дек",
+];
+
+export const Entity = ({ created_at, title, subtitle, image, id }) => {
+  const date = new Date(created_at);
+  const year = date.getFullYear();
+  const month = months[date.getMonth()];
+  const day = date.getDate().toString().padStart(2, "0");
+  const formattedDate = `${month} ${day}, ${year}`;
+  const navigation = useNavigate();
+  function handleClick() {
+    navigation(`${id}/`);
+  }
   return (
-    <StyledEntity>
+    <StyledEntity style={{ marginBottom: 40 }}>
       <StyledEntityImage></StyledEntityImage>
-      <StyledEntityDescription></StyledEntityDescription>
+      <StyledEntityDescription>
+        <FontFootnote>{formattedDate}</FontFootnote>
+        <FontHeadlineBold>{title}</FontHeadlineBold>
+        <FontBody
+          style={{ textOverflow: "elipsis", overflow: "hidden", maxHeight: 76 }}
+        >
+          {subtitle}
+        </FontBody>
+        <StyledInput
+          style={{ maxWidth: 250 }}
+          value={"ПОДРОБНЕЕ"}
+          type="button"
+        />
+      </StyledEntityDescription>
     </StyledEntity>
   );
 };
