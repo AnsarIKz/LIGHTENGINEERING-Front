@@ -1,19 +1,19 @@
+import { observer } from "mobx-react-lite";
 import CommonIntroduction from "../components/CommonIntroduction";
 import Footer from "../components/Footer";
 import { FontHeader } from "../shared/fonts";
+import postList from "../shared/store/postList";
 import {
   Entity,
   StyledContainer,
   StyledSection,
 } from "../shared/styledComponents";
 
-const Page = () => {
-  return (
-    <StyledSection>
-      <StyledContainer></StyledContainer>
-    </StyledSection>
-  );
-};
+const PostList = observer(() => {
+  return postList.data.map((entity) => {
+    return <Entity {...entity} />;
+  });
+});
 
 const BlogPage = () => {
   return (
@@ -24,7 +24,7 @@ const BlogPage = () => {
       </CommonIntroduction>
       <StyledSection>
         <StyledContainer>
-          <Entity />
+          <PostList />
         </StyledContainer>
       </StyledSection>
       <Footer />

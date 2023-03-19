@@ -1,19 +1,19 @@
 import { runInAction, makeAutoObservable } from "mobx";
 import API from "../API";
 
-class ProjectStore {
+class PostStore {
   data = [];
   isLoading = false;
 
   constructor() {
     makeAutoObservable(this);
-    this.fetchProject();
+    this.fetchPosts();
   }
 
-  async fetchProject() {
+  async fetchPosts() {
     this.isLoading = true;
     try {
-      let response = await API.get("project/");
+      let response = await API.get("posts/");
       runInAction(() => {
         this.data = response.data;
         this.isLoading = false;
@@ -27,4 +27,4 @@ class ProjectStore {
   }
 }
 
-export default new ProjectStore();
+export default new PostStore();

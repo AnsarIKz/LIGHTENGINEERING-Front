@@ -18,7 +18,6 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledInput = styled.input`
-  cursor: pointer;
   padding-left: 30px;
   padding-right: 30px;
   font-size: 18px;
@@ -27,13 +26,20 @@ export const StyledInput = styled.input`
   flex: 1;
   min-height: 80px;
   max-height: 80px;
-
+  transition: 0.3s;
   border: 0px;
   border-radius: 5px;
   ${(props) =>
     props.type === "button"
-      ? "background: linear-gradient(267.17deg, #ffc10e 0%, #ffcf45 100%); border-bottom: solid 3px #974800; color:white;"
+      ? "background: linear-gradient(267.17deg, #ffc10e 0%, #ffcf45 100%); border-bottom: solid 3px #974800; color:white; cursor: pointer;"
       : ""}
+
+  :hover {
+    ${(props) =>
+      props.type === "button"
+        ? "opacity: 0.8; border-bottom: solid 1px #974800;"
+        : ""}
+  }
 `;
 
 export const StyledSection = styled.div`
