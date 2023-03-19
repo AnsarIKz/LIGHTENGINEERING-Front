@@ -8,6 +8,7 @@ import styled from "styled-components";
 import category from "../shared/store/category";
 import { observer } from "mobx-react-lite";
 import { useNavigate, useParams } from "react-router-dom";
+import { CatalogNavigation } from "../components/CatalogNavigation";
 
 const StyledCatalogContainer = styled(StyledContainer)`
   display: grid;
@@ -40,49 +41,12 @@ const Catalog = observer(() => {
   );
 });
 
-const CatalogNavigation = () => {
-  const navigation = useNavigate();
-  function handleClick(id = 0) {
-    navigation(`/catalog/${id}`);
-  }
-
-  let reverseNavigation = [...category.navigation].reverse(); // копируем массив и изменяем порядок элементов на обратный
-
-  return (
-    <div style={{ gridColumn: "1 / -1", cursor: "pointer" }}>
-      <FontBodyBold onClick={() => handleClick()} color="black">
-        Каталог /
-      </FontBodyBold>
-      {reverseNavigation.map((nav, index, array) => {
-        if (index != array.length - 1) {
-          return (
-            <FontBodyBold
-              key={nav.id}
-              onClick={() => handleClick(nav.id)}
-              color="black"
-            >
-              {" "}
-              {nav.name} /
-            </FontBodyBold>
-          );
-        } else {
-          return (
-            <FontBodyBold key={nav.id} color="primary">
-              {" "}
-              {nav.name}
-            </FontBodyBold>
-          );
-        }
-      })}
-    </div>
-  );
-};
-
 const CatalogEntity = ({ data: { id, name, is_product } }) => {
   const navigation = useNavigate();
   function handleClick() {
     console.log(id);
     if (is_product) {
+      navigation(`/product/${id}`);
     } else {
       navigation(`/catalog/${id}`);
     }

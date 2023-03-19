@@ -10,10 +10,18 @@ import {
 import product from "../shared/store/product";
 import { useParams } from "react-router-dom";
 
+import category from "../shared/store/category";
+import { CatalogNavigation } from "../components/CatalogNavigation";
+
 const ProductDescription = () => {
   let { productId } = useParams();
   useEffect(() => {
-    product.fetchProduct(id);
+    let load = async () => {
+      await product.fetchProduct(productId);
+
+      category.fetchCatalog(product.data.category);
+    };
+    load();
   }, []);
   return <></>;
 };
@@ -26,6 +34,7 @@ const ProductPage = () => {
       </CommonIntroduction>
       <StyledSection>
         <StyledContainer>
+          <CatalogNavigation />
           <ProductDescription></ProductDescription>
         </StyledContainer>
       </StyledSection>

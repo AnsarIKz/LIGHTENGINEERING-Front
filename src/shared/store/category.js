@@ -8,7 +8,7 @@ class CategoryStore {
 
   constructor() {
     makeAutoObservable(this);
-    this.fetchCatalog();
+    // this.fetchCatalog();
   }
 
   async fetchCatalog(node = 0) {

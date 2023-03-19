@@ -10,6 +10,7 @@ import CatalogPage from "./pages/CatalogPage";
 import BlogPage from "./pages/BlogPage";
 import UsefulPage from "./pages/UsefulPage";
 import ProjectPage from "./pages/ProjectsPage";
+import ProductPage from "./pages/ProductPage";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/catalog/:node",
     element: <CatalogPage />,
+  },
+  {
+    path: "/product/:productId",
+    element: <ProductPage />,
   },
   {
     path: "/blog",
