@@ -19,7 +19,7 @@ export const CatalogNavigation = observer(() => {
         alignSelf: "flex-start",
       }}
     >
-      <FontBodyBold onClick={() => handleClick()} color="black">
+      <FontBodyBold onClick={() => handleClick()} color="white">
         Каталог /
       </FontBodyBold>
       {reverseNavigation.map((nav, index, array) => {
@@ -28,7 +28,7 @@ export const CatalogNavigation = observer(() => {
             <FontBodyBold
               key={nav.id}
               onClick={() => handleClick(nav.id)}
-              color="black"
+              color="white"
             >
               {" "}
               {nav.name} /
@@ -36,7 +36,11 @@ export const CatalogNavigation = observer(() => {
           );
         } else {
           return (
-            <FontBodyBold key={nav.id} color="primary">
+            <FontBodyBold
+              onClick={() => handleClick(nav.id)}
+              key={nav.id}
+              color="primary"
+            >
               {" "}
               {nav.name}
             </FontBodyBold>

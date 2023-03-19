@@ -4,6 +4,7 @@ import { StyledContainer } from "../shared/styledComponents";
 import { FontBody, FontBodyBold, FontCaption } from "../shared/fonts";
 import NavigationMenu from "./NavigationMenu";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const StyledLogoBox = styled.div`
   height: 90px;
@@ -13,9 +14,13 @@ const StyledLogoBox = styled.div`
   justify-content: center;
   align-items: center;
   background-color: white;
+
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+
+  border-radius: ${({ isScrolled }) => (isScrolled ? 0 : "none")};
   cursor: pointer;
+  transition: 0.5s;
 `;
 
 const StyledLogoImg = styled.img`
@@ -29,11 +34,11 @@ const StyledLogoDescription = styled.span`
   cursor: pointer;
 `;
 
-const LogoHeader = () => {
+const LogoHeader = ({ isScrolled }) => {
   const navigation = useNavigate();
   return (
     <>
-      <StyledLogoBox onClick={() => navigation("/")}>
+      <StyledLogoBox isScrolled={isScrolled} onClick={() => navigation("/")}>
         <StyledLogoImg src={LogoImg} />
       </StyledLogoBox>
       <StyledLogoDescription>
@@ -91,6 +96,9 @@ const StyledHeaderContainer = styled.div`
   top: 0px;
   left: 0px;
   width: 100vw;
+  transition: 0.7s;
+
+  background: ${({ isScrolled }) => (isScrolled ? "#232323" : "none")};
 `;
 
 const StyledHeader = styled(StyledContainer)`
@@ -103,10 +111,27 @@ const StyledHeader = styled(StyledContainer)`
 `;
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  useEffect(() => {
+    function handleScroll() {
+      const { scrollY } = window;
+      if (scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <StyledHeaderContainer>
+    <StyledHeaderContainer isScrolled={isScrolled}>
       <StyledHeader>
-        <LogoHeader />
+        <LogoHeader isScrolled={isScrolled} />
         <NavigationMenu />
         <CallButton />
       </StyledHeader>

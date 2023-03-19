@@ -2,13 +2,19 @@ import { useEffect, useState } from "react";
 import CommonIntroduction from "../components/CommonIntroduction";
 import Footer from "../components/Footer";
 import API from "../shared/API";
-import { FontBodyBold, FontHeader, FontTitle } from "../shared/fonts";
+import {
+  FontBodyBold,
+  FontHeader,
+  FontTitle,
+  FontTitle2,
+} from "../shared/fonts";
 import { StyledContainer, StyledSection } from "../shared/styledComponents";
 import styled from "styled-components";
 import category from "../shared/store/category";
 import { observer } from "mobx-react-lite";
 import { useNavigate, useParams } from "react-router-dom";
 import { CatalogNavigation } from "../components/CatalogNavigation";
+import bg from "../assets/img/section3bg.png";
 
 const StyledCatalogContainer = styled(StyledContainer)`
   display: grid;
@@ -20,8 +26,16 @@ const StyledCatalogContainer = styled(StyledContainer)`
 `;
 
 const StyledCatalog = styled.div`
+  box-sizing: border-box;
+  padding: 40px;
   min-height: 360px;
   background: #232323;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 2px;
+  cursor: pointer;
 `;
 
 const Catalog = observer(() => {
@@ -30,7 +44,13 @@ const Catalog = observer(() => {
     category.fetchCatalog(node);
   }, [node]);
   return (
-    <StyledSection>
+    <StyledSection
+      style={{
+        backgroundImage: `url(${bg})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
       <StyledCatalogContainer>
         <CatalogNavigation />
         {category.list.map((category) => (
@@ -41,7 +61,7 @@ const Catalog = observer(() => {
   );
 });
 
-const CatalogEntity = ({ data: { id, name, is_product } }) => {
+const CatalogEntity = ({ data: { id, name, is_product, image } }) => {
   const navigation = useNavigate();
   function handleClick() {
     console.log(id);
@@ -53,7 +73,8 @@ const CatalogEntity = ({ data: { id, name, is_product } }) => {
   }
   return (
     <StyledCatalog onClick={handleClick}>
-      <FontTitle>{name}</FontTitle>
+      <img src={image} />
+      <FontTitle2 style={{ alignSelf: "flex-start" }}>{name}</FontTitle2>
     </StyledCatalog>
   );
 };

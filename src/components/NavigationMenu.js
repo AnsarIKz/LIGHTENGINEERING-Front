@@ -30,11 +30,37 @@ const NavigationMenu = () => {
   const navigation = useNavigate();
   return (
     <StyledNavigationWrapper>
-      <StyledNav onClick={() => navigation("/catalog")}>Каталог</StyledNav>
-      <StyledNav onClick={() => navigation("/blog")}>Блог</StyledNav>
-      <StyledNav onClick={() => navigation("/useful")}>Полезное</StyledNav>
-      <StyledNav onClick={() => navigation("/projects")}>Работы</StyledNav>
-      <StyledNav onClick={() => navigation("/contacts")}>Контакты</StyledNav>
+      <StyledNav
+        onClick={() => navigation("/catalog")}
+        color={window.location.pathname === "/catalog" ? "primary" : null}
+      >
+        Каталог
+      </StyledNav>
+      <StyledNav
+        onClick={() => navigation("/blog")}
+        color={window.location.pathname === "/blog" ? "primary" : null}
+      >
+        Блог
+      </StyledNav>
+      <StyledNav
+        onClick={() => navigation("/useful")}
+        color={window.location.pathname === "/useful" ? "primary" : null}
+      >
+        Полезное
+      </StyledNav>
+      <StyledNav
+        onClick={() => navigation("/projects")}
+        color={window.location.pathname === "/projects" ? "primary" : null}
+      >
+        Работы
+      </StyledNav>
+      <StyledNav
+        onClick={() => navigation("/contacts")}
+        color={window.location.pathname === "/contacts" ? "primary" : null}
+      >
+        Контакты
+      </StyledNav>
+
       <StyledButton>Экспорт</StyledButton>
     </StyledNavigationWrapper>
   );

@@ -11,7 +11,9 @@ export const StyledContainer = styled.div`
 `;
 
 export const StyledInput = styled.input`
+  cursor: pointer;
   padding-left: 30px;
+  padding-right: 30px;
   font-size: 18px;
   font-weight: 400;
   box-sizing: border-box;
