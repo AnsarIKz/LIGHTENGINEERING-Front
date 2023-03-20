@@ -32,6 +32,7 @@ const StyledProduct = styled.div`
 
 const StyledProductImage = styled.img`
   flex: 1;
+  max-width: 320px;
 `;
 const StyledProductDescription = styled.div`
   box-sizing: border-box;
@@ -69,115 +70,133 @@ const ProductDescription = observer(() => {
   return (
     <StyledProduct>
       <div>
-        <StyledProductImage src={product.data.image} />
+        <StyledProductImage src={product.data?.image} />
       </div>
       <StyledProductDescription>
-        <FontTitle2 color="primary">{product.data.name}</FontTitle2>
+        <FontTitle2 color="primary">{product.data?.name}</FontTitle2>
         <br />
-        {product.data.body_material && (
+        {product.data?.body_material && (
           <span>
             <FontBodyBold color="white">Материал корпуса:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.body_material}</FontBody>
+            <FontBody color="white">{product.data?.body_material}</FontBody>
           </span>
         )}
-        {product.data.wind_region && (
+        {product.data?.wind_region && (
           <span>
             <FontBodyBold color="white">Ветровой район:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.wind_region}</FontBody>
+            <FontBody color="white">{product.data?.wind_region}</FontBody>
           </span>
         )}
-        {product.data.coating && (
+        {product.data?.coating && (
           <span>
             <FontBodyBold color="white">Покрытие:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.coating}</FontBody>
+            <FontBody color="white">{product.data?.coating}</FontBody>
           </span>
         )}
-        {product.data.luminous_flux && (
+        {product.data?.luminous_flux && (
           <span>
             <FontBodyBold color="white">Световой поток, лм:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.luminous_flux}</FontBody>
+            <FontBody color="white">{product.data?.luminous_flux}</FontBody>
           </span>
         )}
-        {product.data.power_consumption && (
+        {product.data?.power_consumption && (
           <span>
             <FontBodyBold color="white">Потребляемость, вт:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.power_consumption}</FontBody>
+            <FontBody color="white">{product.data?.power_consumption}</FontBody>
           </span>
         )}
-        {product.data.operating_voltage && (
+        {product.data?.operating_voltage && (
           <span>
             <FontBodyBold color="white">Рабочее напряжение:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.operating_voltage}</FontBody>
+            <FontBody color="white">{product.data?.operating_voltage}</FontBody>
           </span>
         )}
-        {product.data.plinth_type && (
+        {product.data?.plinth_type && (
           <span>
             <FontBodyBold color="white">Тип цоколя:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.plinth_type}</FontBody>
+            <FontBody color="white">{product.data?.plinth_type}</FontBody>
           </span>
         )}
-        {product.data.led_generation && (
+        {product.data?.led_generation && (
           <span>
             <FontBodyBold color="white">Поколение светодиодов:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.led_generation}</FontBody>
+            <FontBody color="white">{product.data?.led_generation}</FontBody>
           </span>
         )}
-        {product.data.protection_level && (
+        {product.data?.protection_level && (
           <span>
             <FontBodyBold color="white">Степень защиты:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.protection_level}</FontBody>
+            <FontBody color="white">{product.data?.protection_level}</FontBody>
           </span>
         )}
-        {product.data.length && (
+        {product.data?.length && (
           <span>
             <FontBodyBold color="white">Длина, мм:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.length}</FontBody>
+            <FontBody color="white">{product.data?.length}</FontBody>
           </span>
         )}
-        {product.data.size && (
+        {product.data?.size && (
           <span>
             <FontBodyBold color="white">Размер ДхШхВ:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.size}</FontBody>
+            <FontBody color="white">{product.data?.size}</FontBody>
           </span>
         )}
-        {product.data.height && (
+        {product.data?.height && (
           <span>
             <FontBodyBold color="white">Высота, мм:</FontBodyBold>{" "}
-            <FontBody color="white">{product.data.height} мм</FontBody>
+            <FontBody color="white">{product.data?.height} мм</FontBody>
           </span>
         )}
-        {product.data.bracket_outreach && (
+        {product.data?.bracket_outreach && (
           <span>
             <FontBodyBold color="white">Вылет кронштейна:</FontBodyBold>{" "}
             <FontBody color="white">
-              {product.data.bracket_outreach} мм
+              {product.data?.bracket_outreach} мм
             </FontBody>
           </span>
         )}
 
-        {product.data.distance_between_holes && (
+        {product.data?.distance_between_holes && (
           <span>
             <FontBodyBold color="white">
               Расстояние между посадочными отверстиями для закладной:
             </FontBodyBold>{" "}
             <FontBody color="white">
-              {product.data.distance_between_holes} мм
+              {product.data?.distance_between_holes} мм
             </FontBody>
           </span>
         )}
 
-        {product.data.profile_tube_size && (
+        {product.data?.profile_tube_size && (
           <span>
             <FontBodyBold color="white">Размер профильной трубы:</FontBodyBold>{" "}
             <FontBody color="white">
-              {product.data.profile_tube_size} мм
+              {product.data?.profile_tube_size} мм
             </FontBody>
           </span>
         )}
-        <br />
-        {product.data.description && (
+        {product.data?.curve_power_light && (
           <span>
-            <FontBody color="white">{product.data.description}</FontBody>
+            <FontBodyBold color="white">Кривая Силы Света:</FontBodyBold>{" "}
+            <FontBody color="white">
+              {product.data?.curve_power_light} мм
+            </FontBody>
+          </span>
+        )}
+        {product.data?.light_angle && (
+          <span>
+            <FontBodyBold color="white">
+              Угол светового потока, градусы:
+            </FontBodyBold>{" "}
+            <FontBody color="white">{product.data?.light_angle} мм</FontBody>
+          </span>
+        )}
+        <br />
+
+        {/* Description */}
+        {product.data?.description && (
+          <span>
+            <FontBody color="white">{product.data?.description}</FontBody>
           </span>
         )}
         <ActionCard />
@@ -196,7 +215,7 @@ const ProductPage = () => {
   useEffect(() => {
     let load = async () => {
       await product.fetchProduct(productId);
-      category.fetchCatalog(product.data.category);
+      category.fetchCatalog(product.data?.category);
     };
     load();
   }, []);

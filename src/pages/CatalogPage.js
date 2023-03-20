@@ -25,7 +25,7 @@ const StyledCatalogContainer = styled(StyledContainer)`
   gap: 40px; /* добавляем промежуток между элементами */
 `;
 
-const StyledCatalog = styled.div`
+const StyledCatalogEntity = styled.div`
   box-sizing: border-box;
   padding: 40px;
   min-height: 360px;
@@ -36,6 +36,9 @@ const StyledCatalog = styled.div`
   flex-direction: column;
   border-radius: 2px;
   cursor: pointer;
+`;
+const StyledCatalogEntityImage = styled.img`
+  max-width: 280px;
 `;
 
 const Catalog = observer(() => {
@@ -74,10 +77,10 @@ const CatalogEntity = ({ data: { id, name, is_product, image } }) => {
     }
   }
   return (
-    <StyledCatalog onClick={handleClick}>
-      <img src={image} />
+    <StyledCatalogEntity onClick={handleClick}>
+      <StyledCatalogEntityImage src={image} />
       <FontTitle2 style={{ alignSelf: "flex-start" }}>{name}</FontTitle2>
-    </StyledCatalog>
+    </StyledCatalogEntity>
   );
 };
 

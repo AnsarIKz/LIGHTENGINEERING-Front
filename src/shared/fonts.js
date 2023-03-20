@@ -143,7 +143,7 @@ const FontHeadline = styled(fontRaleway)`
 `;
 const FontHeadlineBold = styled(fontRaleway)`
   font-size: 20px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 600;
 `;
 const FontHeadline2 = styled(fontRaleway)`

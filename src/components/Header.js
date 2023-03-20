@@ -97,7 +97,7 @@ const StyledHeaderContainer = styled.div`
   left: 0px;
   width: 100vw;
   transition: 0.7s;
-
+  z-index: 2;
   background: ${({ isScrolled }) => (isScrolled ? "#232323" : "none")};
 `;
 

@@ -8,9 +8,14 @@ import {
   StyledSection,
 } from "../shared/styledComponents";
 import {
+  FontBody,
+  FontBodyBold,
+  FontCaption,
   FontFootnote,
   FontHeader,
   FontHeadline,
+  FontHeadline2,
+  FontHeadline2Bold,
   FontHeadlineBold,
   FontTitle,
   FontTitle2,
@@ -29,6 +34,13 @@ import section3 from "../assets/img/section3bg.png";
 import section4 from "../assets/img/section4bg.png";
 import section5 from "../assets/img/section5bg.png";
 
+import whywebg1 from "../assets/img/whywe1.png";
+import whywebg2 from "../assets/img/whywe2.png";
+import whywebg3 from "../assets/img/whywe3.png";
+import whywebg4 from "../assets/img/whywe4.png";
+import whywebg5 from "../assets/img/whywe5.png";
+import whywebg6 from "../assets/img/whywe6.png";
+
 import catalogbg from "../assets/img/catalogbg.png";
 import catalog from "../assets/img/catalog1.png";
 
@@ -37,6 +49,10 @@ import Footer from "../components/Footer";
 import API from "../shared/API";
 import { useContext, useState } from "react";
 import { AlertContext } from "../shared/contexts/AlertContext";
+import { observer } from "mobx-react-lite";
+import productList from "../shared/store/productList";
+import projectList from "../shared/store/projectList";
+import { useNavigate } from "react-router-dom";
 
 const StyledIntroductionSection = styled.div`
   /* min-height: 870px; */
@@ -210,11 +226,22 @@ const StyledProducesContainer = styled(StyledContainer)`
 `;
 
 const StyledProducesList = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    1fr
+  ); /* создаем три колонки с равной шириной */
+  gap: 40px; /* добавляем промежуток между элементами */
 `;
 const StyledProduced = styled.div`
   min-height: 370px;
   width: 260px;
+  padding: 40px;
+  box-sizing: border-box;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
 `;
 
 const StyledCatalog = styled.div`
@@ -229,8 +256,125 @@ const StyledCatalog = styled.div`
 const StyledCatalogCard = styled.div`
   width: 400px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; ;
 `;
+
+const StyledProducedDescription = styled.div`
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-self: flex-end;
+  justify-self: flex-end;
+  text-align: right;
+`;
+
+const Produced = observer(({ index }) => {
+  const navigation = useNavigate();
+  return (
+    <StyledProduced
+      onClick={() => navigation(`/product/${productList.data[index]?.id}`)}
+      style={{
+        backgroundImage: `url(${produced1})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "contain",
+      }}
+    >
+      <StyledProducedDescription>
+        <FontHeadline2Bold>{productList.data[index]?.name}</FontHeadline2Bold>
+        <br />
+        <br />
+        {productList.data[index]?.body_material && (
+          <span>
+            <FontFootnote color="white">Материал корпуса:</FontFootnote>
+            <br />
+            <FontHeadline2Bold color="white">
+              {productList.data[index]?.body_material}
+            </FontHeadline2Bold>
+            <br />
+            <br />
+          </span>
+        )}
+        {productList.data[index]?.wind_region && (
+          <span>
+            <FontFootnote color="white">Ветровой район:</FontFootnote>
+            <br />
+            <FontBody color="white">
+              {productList.data[index]?.wind_region}
+            </FontBody>
+            <br />
+            <br />
+          </span>
+        )}
+        {productList.data[index]?.coating && (
+          <span>
+            <FontFootnote color="white">Покрытие:</FontFootnote>
+            <br />
+            <FontBody color="white">
+              {productList.data[index]?.coating}
+            </FontBody>
+            <br />
+            <br />
+          </span>
+        )}
+        {productList.data[index]?.power_consumption && (
+          <span>
+            <FontFootnote color="white">Потребляемость, вт:</FontFootnote>
+            <br />
+            <FontBody color="white">
+              {productList.data[index]?.power_consumption}
+            </FontBody>
+            <br />
+            <br />
+          </span>
+        )}
+        {productList.data[index]?.operating_voltage && (
+          <span>
+            <FontFootnote color="white">Рабочее напряжение:</FontFootnote>
+            <br />
+            <FontBody color="white">
+              {productList.data[index]?.operating_voltage}
+            </FontBody>
+            <br />
+            <br />
+          </span>
+        )}
+        {productList.data[index]?.plinth_type && (
+          <span>
+            <FontFootnote color="white">Тип цоколя:</FontFootnote>
+            <br />
+            <FontBody color="white">
+              {productList.data[index]?.plinth_type}
+            </FontBody>
+            <br />
+            <br />
+          </span>
+        )}
+        {productList.data[index]?.led_generation && (
+          <span>
+            <FontFootnote color="white">Поколение светодиодов:</FontFootnote>
+            <br />
+            <FontBody color="white">
+              {productList.data[index]?.led_generation}
+            </FontBody>
+            <br />
+            <br />
+          </span>
+        )}
+        {productList.data[index]?.protection_level && (
+          <span>
+            <FontFootnote color="white">Степень защиты:</FontFootnote>
+            <br />
+            <FontBody color="white">
+              {productList.data[index]?.protection_level}
+            </FontBody>
+            <br />
+            <br />
+          </span>
+        )}
+      </StyledProducedDescription>
+    </StyledProduced>
+  );
+});
 
 const OurProduces = () => {
   return (
@@ -248,41 +392,9 @@ const OurProduces = () => {
         </FontTitle>
         <FontHeadline color="black">Самые популярные товары</FontHeadline>
         <StyledProducesList style={{ marginTop: 40 + "px" }}>
-          <StyledProduced
-            style={{
-              marginRight: 40,
-              backgroundImage: `url(${produced1})`,
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
-            }}
-          ></StyledProduced>
-          <StyledProduced
-            style={{
-              marginRight: 40,
-              backgroundImage: `url(${produced2})`,
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
-            }}
-          ></StyledProduced>
-          <StyledProduced
-            style={{
-              marginRight: 40,
-              backgroundImage: `url(${produced3})`,
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
-            }}
-          ></StyledProduced>
-          <StyledProduced
-            style={{
-              backgroundImage: `url(${produced1})`,
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "contain",
-            }}
-          ></StyledProduced>
+          {[0, 1, 2, 3].map((index) => {
+            return <Produced key={index} index={index} />;
+          })}
         </StyledProducesList>
         <StyledCatalog>
           <StyledCatalogCard>
@@ -305,16 +417,30 @@ const OurProduces = () => {
 };
 
 const StyledWhyWeWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* создаем три колонки с равной шириной */
+  gap: 40px; /* добавляем промежуток между элементами */
   margin: 40px 0px 0px;
   width: 100%;
-  justify-content: space-between;
 `;
 
 const StyledWhyWeCard = styled(StyledCard)`
   background: white;
   height: 220px;
   width: 360px;
+  box-sizing: border-box;
+  padding: 40px;
+`;
+
+const StyledWhyWeDescription = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 90px;
+  text-align: center;
 `;
 const WhyWe = () => {
   return (
@@ -328,17 +454,111 @@ const WhyWe = () => {
     >
       <StyledContainer>
         <FontTitle>
-          ПОЧЕМУ СТОИТ ВЫБРАТЬ НАС<FontTitle color="primary">?</FontTitle>
+          ПОЧЕМУ СТОИТ ВЫБРАТЬ НАС <FontTitle color="primary">?</FontTitle>
         </FontTitle>
         <StyledWhyWeWrapper>
-          <StyledWhyWeCard></StyledWhyWeCard>
-          <StyledWhyWeCard></StyledWhyWeCard>
-          <StyledWhyWeCard></StyledWhyWeCard>
-        </StyledWhyWeWrapper>
-        <StyledWhyWeWrapper>
-          <StyledWhyWeCard></StyledWhyWeCard>
-          <StyledWhyWeCard></StyledWhyWeCard>
-          <StyledWhyWeCard></StyledWhyWeCard>
+          <StyledWhyWeCard
+            style={{
+              backgroundImage: `url(${whywebg1})`,
+              backgroundPositionX: "center",
+              backgroundPositionY: "top",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <StyledWhyWeDescription>
+              <FontBodyBold color="black">Научный подход</FontBodyBold>
+
+              <FontCaption color="black">
+                У нас 9 патентов и инженеры со степенью PhD и MTech
+              </FontCaption>
+            </StyledWhyWeDescription>
+          </StyledWhyWeCard>
+          <StyledWhyWeCard
+            style={{
+              backgroundImage: `url(${whywebg2})`,
+              backgroundPositionX: "center",
+              backgroundPositionY: "top",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <StyledWhyWeDescription>
+              <FontBodyBold color="black">5 лет гарантии!</FontBodyBold>
+              <FontCaption color="black">
+                Без разбора ситуации ремонтируем или меняем сбойный светильник
+                на новый
+              </FontCaption>
+            </StyledWhyWeDescription>
+          </StyledWhyWeCard>
+          <StyledWhyWeCard
+            style={{
+              backgroundImage: `url(${whywebg3})`,
+              backgroundPositionX: "center",
+              backgroundPositionY: "top",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <StyledWhyWeDescription>
+              <FontBodyBold color="black">По честной цене!</FontBodyBold>
+              <FontCaption color="black">
+                Мы работаем в "долгую" поэтому наши цены "не кусаются" и всегда
+                обоснованы
+              </FontCaption>
+            </StyledWhyWeDescription>
+          </StyledWhyWeCard>
+          <StyledWhyWeCard
+            style={{
+              backgroundImage: `url(${whywebg4})`,
+              backgroundPositionX: "center",
+              backgroundPositionY: "top",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <StyledWhyWeDescription>
+              <FontBodyBold color="black">На любой объект!</FontBodyBold>
+              <FontCaption color="black">
+                Благодаря собственной сборочной линии можно изготовить
+                оборудование под самый требовательный проект
+              </FontCaption>
+            </StyledWhyWeDescription>
+          </StyledWhyWeCard>
+          <StyledWhyWeCard
+            style={{
+              backgroundImage: `url(${whywebg5})`,
+              backgroundPositionX: "center",
+              backgroundPositionY: "top",
+              backgroundSize: "contain",
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <StyledWhyWeDescription>
+              <FontBodyBold color="black">На любой бюджет!</FontBodyBold>
+              <FontCaption color="black">
+                Всегда можно найти решение на любой бюджет, дайте только
+                направление и определите нам рамки
+              </FontCaption>
+            </StyledWhyWeDescription>
+          </StyledWhyWeCard>
+          <StyledWhyWeCard
+            style={{
+              backgroundImage: `url(${whywebg6})`,
+              backgroundPositionX: "center",
+              backgroundPositionY: "top",
+              backgroundSize: 120,
+              backgroundRepeat: "no-repeat",
+            }}
+          >
+            <StyledWhyWeDescription>
+              <FontBodyBold color="black">Мы стараемся!</FontBodyBold>
+              <FontCaption color="black">
+                Мы пока не №1 на светотехническом рынке, поэтому очень стараемся
+                чтоб ими стать
+              </FontCaption>
+            </StyledWhyWeDescription>
+          </StyledWhyWeCard>
         </StyledWhyWeWrapper>
       </StyledContainer>
     </StyledSection>
@@ -437,15 +657,25 @@ const ConsultingForm = () => {
 };
 
 const StyledOurProjectsWrapper = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* создаем три колонки с равной шириной */
+  gap: 40px; /* добавляем промежуток между элементами */
   margin: 40px 0px 0px;
   width: 100%;
-  justify-content: space-between;
 `;
 const StyledOurProjectCard = styled(StyledCard)`
-  width: 360px;
   height: 225px;
   background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 20px;
+  cursor: pointer;
 `;
 
 const StyledInstagram = styled.div`
@@ -485,6 +715,22 @@ const OurInstagram = () => {
   );
 };
 
+const Projects = observer(({ index }) => {
+  const navigation = useNavigate();
+  return (
+    <StyledOurProjectCard
+      onClick={() => navigation(`/project/${projectList.data[index]?.id}`)}
+      style={{
+        backgroundImage: `url(${projectList.data[index]?.image})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      <FontHeadline2>{projectList.data[index]?.title}</FontHeadline2>
+    </StyledOurProjectCard>
+  );
+});
+
 const OurProjects = () => {
   return (
     <StyledSection
@@ -500,14 +746,9 @@ const OurProjects = () => {
           РАБОТАЛИ
         </FontTitle>
         <StyledOurProjectsWrapper>
-          <StyledOurProjectCard></StyledOurProjectCard>
-          <StyledOurProjectCard></StyledOurProjectCard>
-          <StyledOurProjectCard></StyledOurProjectCard>
-        </StyledOurProjectsWrapper>
-        <StyledOurProjectsWrapper>
-          <StyledOurProjectCard></StyledOurProjectCard>
-          <StyledOurProjectCard></StyledOurProjectCard>
-          <StyledOurProjectCard></StyledOurProjectCard>
+          {[0, 1, 2, 3, 4, 5].map((index) => (
+            <Projects key={index} index={index} />
+          ))}
         </StyledOurProjectsWrapper>
       </StyledContainer>
       <OurInstagram></OurInstagram>
