@@ -366,6 +366,33 @@ const StyledFormInput = styled(StyledInput)`
 `;
 
 const ConsultingForm = () => {
+  let [name, setName] = useState("");
+  let [phoneNumber, setPhoneNumber] = useState("");
+  const { handleShow } = useContext(AlertContext);
+
+  const onHandleClick = () => {
+    // Make sure both name and phone number are filled in
+    if (!name || !phoneNumber) {
+      handleShow("Please fill in both name and phone number");
+      return;
+    }
+
+    API.post("requests/create/", {
+      full_name: name,
+      phone: phoneNumber,
+    })
+      .then((response) => {
+        console.log(response.data); // Do something with the response if needed
+        handleShow("");
+      })
+      .catch((error) => {
+        console.error(error);
+        handleShow(
+          "An error occurred while submitting the form. Please try again later."
+        );
+      });
+  };
+
   return (
     <StyledSection
       style={{
@@ -386,12 +413,19 @@ const ConsultingForm = () => {
             <FontFootnote style={{ marginBottom: 20 }}>
               Оставьте заявку и наш менеджер свяжется с вами!{" "}
             </FontFootnote>
-            <StyledFormInput placeholder="Валерий Игубин"></StyledFormInput>
+            <StyledFormInput
+              placeholder="Валерий Игубин"
+              onChange={(event) => setName(event.target.value)}
+              value={name}
+            ></StyledFormInput>
             <StyledFormInput
               placeholder="+7 705 772 88 40"
               style={{ marginTop: 20, marginBottom: 20 }}
+              onChange={(event) => setPhoneNumber(event.target.value)}
+              value={phoneNumber}
             ></StyledFormInput>
             <StyledFormInput
+              onClick={onHandleClick}
               value={"Оставить заявку на консультацию"}
               type="button"
             ></StyledFormInput>

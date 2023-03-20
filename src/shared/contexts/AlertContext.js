@@ -1,16 +1,18 @@
 import React, { useState, createContext, useContext } from "react";
 import styled from "styled-components";
+import { FontBodyBold } from "../fonts";
 
 export const AlertContext = createContext();
 
 const AlertWrapper = styled.div`
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 50px;
+  right: 50%;
+  transform: translate(50%);
   padding: 20px;
-  background-color: #ddd;
+  background-color: #232323;
+  opacity: 1;
   opacity: 0.8;
-  color: black;
   border-radius: 5px;
   box-shadow: 0 0 10px #333;
   z-index: 99;
@@ -20,7 +22,11 @@ const AlertWrapper = styled.div`
 function Alert() {
   const { show, message } = useContext(AlertContext);
 
-  return <AlertWrapper show={show}>{message}</AlertWrapper>;
+  return (
+    <AlertWrapper show={show}>
+      <FontBodyBold>{message}</FontBodyBold>
+    </AlertWrapper>
+  );
 }
 
 export function AlertProvider({ children }) {
