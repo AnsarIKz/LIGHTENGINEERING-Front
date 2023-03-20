@@ -34,6 +34,9 @@ import catalog from "../assets/img/catalog1.png";
 
 import instagrammockup from "../assets/img/instagrammockup.png";
 import Footer from "../components/Footer";
+import API from "../shared/API";
+import { useContext, useState } from "react";
+import { AlertContext } from "../shared/contexts/AlertContext";
 
 const StyledIntroductionSection = styled.div`
   /* min-height: 870px; */
@@ -84,19 +87,54 @@ const StyledIntroductionProduct = styled.div`
 `;
 
 const IntroductionForm = () => {
-  const onHandleSubmit = () => {};
+  let [isReady, setReady] = useState(true);
+
+  let [name, setName] = useState("");
+  let [phoneNumber, setPhoneNumber] = useState("");
+  const { handleShow } = useContext(AlertContext);
+
+  const onHandleClick = () => {
+    // Make sure both name and phone number are filled in
+    if (!name || !phoneNumber) {
+      handleShow("Please fill in both name and phone number");
+      return;
+    }
+
+    API.post("requests/create/", {
+      full_name: name,
+      phone: phoneNumber,
+    })
+      .then((response) => {
+        console.log(response.data); // Do something with the response if needed
+        handleShow("");
+      })
+      .catch((error) => {
+        console.error(error);
+        handleShow(
+          "An error occurred while submitting the form. Please try again later."
+        );
+      });
+  };
+
   return (
     <StyledIntroductionForm>
-      <StyledIntroductionFormInputs onSubmit={onHandleSubmit}>
-        <StyledInput placeholder="Валерий Игубин" />
+      <StyledIntroductionFormInputs>
+        <StyledInput
+          placeholder="Валерий Игубин"
+          onChange={(event) => setName(event.target.value)}
+          value={name}
+        />
 
         <StyledInput
           type="tel"
           placeholder="+7 705 772 88 40"
           style={{ marginLeft: 20 }}
+          onChange={(event) => setPhoneNumber(event.target.value)}
+          value={phoneNumber}
         />
       </StyledIntroductionFormInputs>
       <StyledInput
+        onClick={onHandleClick}
         value={"Оставить заявку на консультацию"}
         style={{ marginTop: 20 }}
         type="button"

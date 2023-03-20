@@ -11,6 +11,7 @@ import BlogPage from "./pages/BlogPage";
 import UsefulPage from "./pages/UsefulPage";
 import ProjectPage from "./pages/ProjectsPage";
 import ProductPage from "./pages/ProductPage";
+import { AlertProvider } from "./shared/contexts/AlertContext";
 
 const router = createBrowserRouter([
   {
@@ -47,9 +48,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <FontGlobalStyles />
-
-    <RouterProvider router={router} />
+    <AlertProvider>
+      <FontGlobalStyles />
+      <RouterProvider router={router} />
+    </AlertProvider>
   </React.StrictMode>
 );
 
