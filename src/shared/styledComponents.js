@@ -29,6 +29,7 @@ export const StyledInput = styled.input`
   transition: 0.3s;
   border: 0px;
   border-radius: 5px;
+
   ${(props) =>
     props.type === "button"
       ? "background: linear-gradient(267.17deg, #ffc10e 0%, #ffcf45 100%); border-bottom: solid 3px #974800; color:white; cursor: pointer;"
