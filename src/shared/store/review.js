@@ -13,7 +13,7 @@ class ReviewStore {
   async fetchReview() {
     this.isLoading = true;
     try {
-      let response = await API.get("review/");
+      let response = await API.get("reviews/");
       runInAction(() => {
         this.data = response.data;
         this.isLoading = false;
