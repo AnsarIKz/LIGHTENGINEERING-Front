@@ -12,7 +12,8 @@ import UsefulPage from "./pages/UsefulPage";
 import ProjectPage from "./pages/ProjectsPage";
 import ProductPage from "./pages/ProductPage";
 import { AlertProvider } from "./shared/contexts/AlertContext";
-import BlogDetail from "./shared/store/blogDetail";
+
+import BlogDetailPage from "./pages/BlogDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/blog/:type/:id",
-    element: <BlogDetail />,
+    element: <BlogDetailPage />,
   },
 ]);
 

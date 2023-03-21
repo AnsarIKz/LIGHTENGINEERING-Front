@@ -81,7 +81,7 @@ const StyledEntityDescription = styled.div`
   justify-content: space-between;
 `;
 
-const months = [
+export const months = [
   "Янв",
   "Фев",
   "Мар",
@@ -96,7 +96,14 @@ const months = [
   "Дек",
 ];
 
-export const Entity = ({ created_at, title, subtitle, image, id }) => {
+export const Entity = ({
+  created_at,
+  title,
+  subtitle,
+  image,
+  id,
+  blog_type,
+}) => {
   const date = new Date(created_at);
   const year = date.getFullYear();
   const month = months[date.getMonth()];
@@ -104,7 +111,7 @@ export const Entity = ({ created_at, title, subtitle, image, id }) => {
   const formattedDate = `${month} ${day}, ${year}`;
   const navigation = useNavigate();
   function handleClick() {
-    navigation(`${id}/`);
+    navigation(`/blog/${blog_type}/${id}/`);
   }
   return (
     <StyledEntity style={{ marginBottom: 40 }}>
@@ -118,6 +125,7 @@ export const Entity = ({ created_at, title, subtitle, image, id }) => {
           {subtitle}
         </FontBody>
         <StyledInput
+          onClick={handleClick}
           style={{ maxWidth: 250 }}
           value={"ПОДРОБНЕЕ"}
           type="button"

@@ -11,7 +11,7 @@ import {
 
 const ProjectList = observer(() => {
   return projectList.data.map((entity) => {
-    return <Entity {...entity} />;
+    return <Entity blog_type={"project"} {...entity} />;
   });
 });
 
