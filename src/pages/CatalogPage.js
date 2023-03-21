@@ -14,7 +14,6 @@ import category from "../shared/store/category";
 import { observer } from "mobx-react-lite";
 import { useNavigate, useParams } from "react-router-dom";
 import { CatalogNavigation } from "../components/CatalogNavigation";
-import bg from "../assets/img/section3bg.png";
 
 const StyledCatalogContainer = styled(StyledContainer)`
   display: grid;

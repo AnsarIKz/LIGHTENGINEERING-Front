@@ -53,6 +53,7 @@ import { observer } from "mobx-react-lite";
 import productList from "../shared/store/productList";
 import projectList from "../shared/store/projectList";
 import { useNavigate } from "react-router-dom";
+import review from "../shared/store/review";
 
 const StyledIntroductionSection = styled.div`
   /* min-height: 870px; */
@@ -112,7 +113,7 @@ const IntroductionForm = () => {
   const onHandleClick = () => {
     // Make sure both name and phone number are filled in
     if (!name || !phoneNumber) {
-      handleShow("Please fill in both name and phone number");
+      handleShow("Заполните оба поля");
       return;
     }
 
@@ -122,13 +123,11 @@ const IntroductionForm = () => {
     })
       .then((response) => {
         console.log(response.data); // Do something with the response if needed
-        handleShow("");
+        handleShow("Заявка отправлена");
       })
       .catch((error) => {
         console.error(error);
-        handleShow(
-          "An error occurred while submitting the form. Please try again later."
-        );
+        handleShow("Ошибка, попробуйте позже.");
       });
   };
 
@@ -593,7 +592,7 @@ const ConsultingForm = () => {
   const onHandleClick = () => {
     // Make sure both name and phone number are filled in
     if (!name || !phoneNumber) {
-      handleShow("Please fill in both name and phone number");
+      handleShow("Заполните оба поля");
       return;
     }
 
@@ -603,13 +602,11 @@ const ConsultingForm = () => {
     })
       .then((response) => {
         console.log(response.data); // Do something with the response if needed
-        handleShow("");
+        handleShow("Заявка отправлена");
       })
       .catch((error) => {
         console.error(error);
-        handleShow(
-          "An error occurred while submitting the form. Please try again later."
-        );
+        handleShow("Ошибка, попробуйте позже.");
       });
   };
 
@@ -699,6 +696,7 @@ const StyledInstagramButton = styled(StyledInput)`
 `;
 
 const OurInstagram = () => {
+  function onHandleReferToInstagram() {}
   return (
     <StyledContainer>
       <StyledInstagram>
@@ -707,7 +705,11 @@ const OurInstagram = () => {
             ПОДПИСЫВАЙТЕСЬ НА НАШ INSTAGRAM
             <br />И УЗНАВАЙТЕ О НОВОСТЯХ ПЕРВЫМИ!
           </FontTitle>
-          <StyledInstagramButton value={"ПЕРЕЙТИ В ИНСТАГРАМ"} type="button" />
+          <StyledInstagramButton
+            onClick={onHandleReferToInstagram}
+            value={"ПЕРЕЙТИ В ИНСТАГРАМ"}
+            type="button"
+          />
         </StyledInstagramTitle>
         <StyledInstagramMockup src={instagrammockup} />
       </StyledInstagram>
@@ -756,10 +758,29 @@ const OurProjects = () => {
   );
 };
 
+const StyledReviewScroll = styled.div`
+  width: 100%;
+  display: flex;
+  overflow-x: scroll;
+  margin-top: 40px;
+  padding-bottom: 20px;
+`;
+const StyledReviewImg = styled.img`
+  height: 400px;
+  margin-right: 20px;
+`;
+
 const OurReviews = () => {
   return (
     <StyledSection>
-      <StyledContainer></StyledContainer>
+      <StyledContainer>
+        <FontTitle color="black">Реальные Отзывы</FontTitle>
+        <StyledReviewScroll>
+          {review.data.map((review) => {
+            return <StyledReviewImg src={review.image} />;
+          })}
+        </StyledReviewScroll>
+      </StyledContainer>
     </StyledSection>
   );
 };
