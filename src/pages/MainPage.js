@@ -376,6 +376,7 @@ const Produced = observer(({ index }) => {
 });
 
 const OurProduces = () => {
+  const navigation = useNavigate();
   return (
     <StyledSection
       style={{
@@ -401,6 +402,9 @@ const OurProduces = () => {
               ПЕРЕЙДИТЕ В КАТАЛОГ ЧТОБЫ УВИДЕТЬ ВСЕ ТОВАРЫ
             </FontHeadline>
             <StyledInput
+              onClick={() => {
+                navigation("/catalog");
+              }}
               style={{ marginTop: 12 }}
               value={"Перейти в каталог"}
               type="button"
@@ -696,7 +700,9 @@ const StyledInstagramButton = styled(StyledInput)`
 `;
 
 const OurInstagram = () => {
-  function onHandleReferToInstagram() {}
+  function onHandleReferToInstagram() {
+    window.open("https://www.instagram.com/svet.krg/");
+  }
   return (
     <StyledContainer>
       <StyledInstagram>

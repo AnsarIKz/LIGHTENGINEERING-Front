@@ -63,8 +63,12 @@ const StyledCallButtonBox = styled.div`
 `;
 
 const CallButton = () => {
+  const handleOpenWhatsApp = () => {
+    window.open("https://wa.me/77057771221", "_blank");
+  };
+
   return (
-    <StyledCallButtonBox>
+    <StyledCallButtonBox onClick={handleOpenWhatsApp}>
       <svg
         width="26"
         height="26"

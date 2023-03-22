@@ -14,6 +14,7 @@ import ProductPage from "./pages/ProductPage";
 import { AlertProvider } from "./shared/contexts/AlertContext";
 
 import BlogDetailPage from "./pages/BlogDetailPage";
+import ContactPage from "./pages/ContactPage";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "/blog/:type/:id",
     element: <BlogDetailPage />,
+  },
+  {
+    path: "/contacts",
+    element: <ContactPage />,
   },
 ]);
 
