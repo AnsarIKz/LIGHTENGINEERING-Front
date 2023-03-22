@@ -92,7 +92,7 @@ const ContactPage = () => {
                 width="560"
                 height="400"
                 frameBorder="0"
-                allowfullscreen="true"
+                allowFullScreen={true}
                 style={{ position: "relative" }}
               ></iframe>
             </div>
