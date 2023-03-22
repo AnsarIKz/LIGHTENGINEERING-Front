@@ -24,6 +24,18 @@ const StyledBlogContainer = styled(StyledContainer)`
   align-items: flex-start;
 `;
 
+const StyledBlogImageCarousel = styled.div`
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 20px;
+`;
+const StyledBlogImage = styled.img`
+  margin-right: 20px;
+  height: 400px;
+`;
+
 const BlogDetailPage = observer(() => {
   const date = new Date(blogDetail.data?.created_at);
   const year = date.getFullYear();
@@ -57,6 +69,11 @@ const BlogDetailPage = observer(() => {
           <FontBody style={{ marginTop: 20 }} color="black">
             {blogDetail.data?.subtitle}
           </FontBody>
+          <StyledBlogImageCarousel>
+            {blogDetail.data.photos.map((elem) => (
+              <StyledBlogImage alt={elem.caption} src={elem.image} />
+            ))}
+          </StyledBlogImageCarousel>
         </StyledBlogContainer>
       </StyledSection>
       <Footer />

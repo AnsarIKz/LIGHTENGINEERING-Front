@@ -721,7 +721,7 @@ const Projects = observer(({ index }) => {
   const navigation = useNavigate();
   return (
     <StyledOurProjectCard
-      onClick={() => navigation(`/project/${projectList.data[index]?.id}`)}
+      onClick={() => navigation(`/blog/project/${projectList.data[index]?.id}`)}
       style={{
         backgroundImage: `url(${projectList.data[index]?.image})`,
         backgroundRepeat: "no-repeat",
@@ -770,7 +770,7 @@ const StyledReviewImg = styled.img`
   margin-right: 20px;
 `;
 
-const OurReviews = () => {
+const OurReviews = observer(() => {
   return (
     <StyledSection>
       <StyledContainer>
@@ -783,7 +783,7 @@ const OurReviews = () => {
       </StyledContainer>
     </StyledSection>
   );
-};
+});
 
 const MainPage = () => {
   return (

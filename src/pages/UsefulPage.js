@@ -11,7 +11,7 @@ import usefulList from "../shared/store/usefulList";
 
 const UsefulList = observer(() => {
   return usefulList.data.map((entity) => {
-    return <Entity {...entity} />;
+    return <Entity blog_type={"useful"} {...entity} />;
   });
 });
 

@@ -11,7 +11,7 @@ import {
 
 const PostList = observer(() => {
   return postList.data.map((entity) => {
-    return <Entity {...entity} />;
+    return <Entity blog_type={"post"} {...entity} />;
   });
 });
 

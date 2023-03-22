@@ -13,7 +13,7 @@ class PostStore {
   async fetchPosts() {
     this.isLoading = true;
     try {
-      let response = await API.get("posts/");
+      let response = await API.get("post/");
       runInAction(() => {
         this.data = response.data;
         this.isLoading = false;
