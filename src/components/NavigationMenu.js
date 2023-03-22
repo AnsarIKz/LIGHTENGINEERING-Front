@@ -61,7 +61,16 @@ const NavigationMenu = () => {
         Контакты
       </StyledNav>
 
-      <StyledButton>Экспорт</StyledButton>
+      <StyledButton
+        onClick={() => {
+          window.open(
+            "https://megallp.kz/storage/app/media/Light_Engineering_LLP_catalog.pdf",
+            "_blank"
+          );
+        }}
+      >
+        Экспорт
+      </StyledButton>
     </StyledNavigationWrapper>
   );
 };
