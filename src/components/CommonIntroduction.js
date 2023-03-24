@@ -9,6 +9,7 @@ const CommonIntroduction = ({ children }) => {
       <StyledSection
         style={{
           backgroundImage: `url(${commonbg})`,
+          backgroundColor: "#232323",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           minHeight: "60vh",

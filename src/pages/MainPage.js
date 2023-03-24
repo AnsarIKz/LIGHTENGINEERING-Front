@@ -58,6 +58,7 @@ import review from "../shared/store/review";
 const StyledIntroductionSection = styled.div`
   /* min-height: 870px; */
   background: url(${mainImg});
+  background-color: #232323;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -246,6 +247,7 @@ const StyledProduced = styled.div`
 const StyledCatalog = styled.div`
   display: flex;
   background: url(${catalogbg});
+  background-color: #232323;
   width: 100%;
   height: 260px;
   margin-top: 40px;
@@ -381,6 +383,7 @@ const OurProduces = () => {
     <StyledSection
       style={{
         backgroundImage: `url(${section2})`,
+        backgrundColor: "#232323",
         backgroundRepeat: "no-repeat",
         // backgroundPosition: "bottom",
         backgroundSize: "cover",
@@ -450,6 +453,7 @@ const WhyWe = () => {
     <StyledSection
       style={{
         backgroundImage: `url(${section3})`,
+        backgroundColor: "#232323",
         backgroundRepeat: "no-repeat",
         // backgroundPosition: "bottom",
         backgroundSize: "cover",
@@ -743,6 +747,7 @@ const OurProjects = () => {
   return (
     <StyledSection
       style={{
+        backgroundColor: "#232323",
         backgroundImage: `url(${section5})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
