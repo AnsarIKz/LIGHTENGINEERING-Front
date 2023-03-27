@@ -249,6 +249,11 @@ const StyledProduced = styled.div`
   @media (max-width: 1200px) {
     display: ${(props) => (props.index == 3 ? "none" : "flex")};
   }
+  @media (max-width: 960px) {
+    display: ${(props) =>
+      props.index == 2 || props.index == 3 ? "none" : "flex"};
+    width: 300px;
+  }
 `;
 
 const StyledCatalog = styled.div`
@@ -264,7 +269,10 @@ const StyledCatalog = styled.div`
 const StyledCatalogCard = styled.div`
   width: 400px;
   display: flex;
-  flex-direction: column; ;
+  flex-direction: column;
+  @media (max-width: 960px) {
+    text-align: center;
+  }
 `;
 
 const StyledProducedDescription = styled.div`
@@ -385,6 +393,15 @@ const Produced = observer(({ index }) => {
   );
 });
 
+const StyledCatalogImg = styled.img`
+  height: 70%;
+  @media (max-width: 1200px) {
+    height: 50%;
+  }
+  @media (max-width: 960px) {
+    display: none;
+  }
+`;
 const OurProduces = () => {
   const navigation = useNavigate();
   return (
@@ -421,9 +438,8 @@ const OurProduces = () => {
               type="button"
             />
           </StyledCatalogCard>
-          <StyledCatalogCard>
-            <img style={{ height: "100%" }} src={catalog} />
-          </StyledCatalogCard>
+
+          <StyledCatalogImg src={catalog} />
         </StyledCatalog>
       </StyledProducesContainer>
     </StyledSection>
