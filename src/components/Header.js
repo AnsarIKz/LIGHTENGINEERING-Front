@@ -32,6 +32,9 @@ const StyledLogoDescription = styled.span`
   align-self: center;
   margin-left: 30px;
   cursor: pointer;
+  @media (max-width: 1200px) {
+    display: none;
+  }
 `;
 
 const LogoHeader = ({ isScrolled }) => {

@@ -15,6 +15,9 @@ export const StyledContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  @media (max-width: 1200px) {
+    max-width: 840px;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -56,6 +59,9 @@ export const StyledSection = styled.div`
 export const StyledCard = styled.div`
   width: 360px;
   border-radius: 1px;
+  @media (max-width: 1200px) {
+    width: 400px;
+  }
 `;
 
 const StyledEntityImage = styled.div`

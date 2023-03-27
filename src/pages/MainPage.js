@@ -102,6 +102,10 @@ const StyledIntroductionProduct = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  @media (max-width: 1200px) {
+    min-width: 220px;
+    display: none;
+  }
 `;
 
 const IntroductionForm = () => {
@@ -227,11 +231,11 @@ const StyledProducesContainer = styled(StyledContainer)`
 
 const StyledProducesList = styled.div`
   display: grid;
-  grid-template-columns: repeat(
-    4,
-    1fr
-  ); /* создаем три колонки с равной шириной */
-  gap: 40px; /* добавляем промежуток между элементами */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 const StyledProduced = styled.div`
   min-height: 370px;
@@ -242,6 +246,9 @@ const StyledProduced = styled.div`
   overflow: hidden;
   position: relative;
   cursor: pointer;
+  @media (max-width: 1200px) {
+    display: ${(props) => (props.index == 3 ? "none" : "flex")};
+  }
 `;
 
 const StyledCatalog = styled.div`
@@ -272,6 +279,7 @@ const Produced = observer(({ index }) => {
   const navigation = useNavigate();
   return (
     <StyledProduced
+      index={index}
       onClick={() => navigation(`/product/${productList.data[index]?.id}`)}
       style={{
         backgroundImage: `url(${produced1})`,
@@ -385,7 +393,6 @@ const OurProduces = () => {
         backgroundImage: `url(${section2})`,
         backgrundColor: "#232323",
         backgroundRepeat: "no-repeat",
-        // backgroundPosition: "bottom",
         backgroundSize: "cover",
       }}
     >
@@ -395,9 +402,10 @@ const OurProduces = () => {
         </FontTitle>
         <FontHeadline color="black">Самые популярные товары</FontHeadline>
         <StyledProducesList style={{ marginTop: 40 + "px" }}>
-          {[0, 1, 2, 3].map((index) => {
-            return <Produced key={index} index={index} />;
-          })}
+          <Produced key={0} index={0} />
+          <Produced key={1} index={1} />
+          <Produced key={2} index={2} />
+          <Produced key={3} index={3} />
         </StyledProducesList>
         <StyledCatalog>
           <StyledCatalogCard>
@@ -431,6 +439,10 @@ const StyledWhyWeWrapper = styled.div`
   gap: 40px; /* добавляем промежуток между элементами */
   margin: 40px 0px 0px;
   width: 100%;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const StyledWhyWeCard = styled(StyledCard)`
@@ -439,6 +451,9 @@ const StyledWhyWeCard = styled(StyledCard)`
   width: 360px;
   box-sizing: border-box;
   padding: 40px;
+  @media (max-width: 1200px) {
+    width: 400px;
+  }
 `;
 
 const StyledWhyWeDescription = styled.div`
@@ -670,6 +685,9 @@ const StyledOurProjectsWrapper = styled.div`
   gap: 40px; /* добавляем промежуток между элементами */
   margin: 40px 0px 0px;
   width: 100%;
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 const StyledOurProjectCard = styled(StyledCard)`
   height: 225px;
