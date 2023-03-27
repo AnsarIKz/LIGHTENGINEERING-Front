@@ -10,10 +10,14 @@ import {
   FontTitle2,
 } from "../shared/fonts";
 import { StyledContainer, StyledSection } from "../shared/styledComponents";
+import appStore from "../shared/store/appStore";
 
 const StyledContactContainer = styled(StyledContainer)`
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
 `;
 
 const StyledContactDescription = styled.div`
@@ -21,6 +25,9 @@ const StyledContactDescription = styled.div`
 `;
 const StyledContactMap = styled.div`
   flex: 1;
+  @media (max-width: 1200px) {
+    margin-top: 40px;
+  }
 `;
 
 const ContactPage = () => {

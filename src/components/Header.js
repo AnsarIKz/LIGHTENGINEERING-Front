@@ -2,7 +2,7 @@ import styled from "styled-components";
 import LogoImg from "../assets/img/logo.png";
 import { StyledContainer } from "../shared/styledComponents";
 import { FontBody, FontBodyBold, FontCaption } from "../shared/fonts";
-import NavigationMenu from "./NavigationMenu";
+import NavigationMenu, { BurgerMenu } from "./NavigationMenu";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
@@ -141,6 +141,7 @@ const Header = () => {
         <LogoHeader isScrolled={isScrolled} />
         <NavigationMenu />
         <CallButton />
+        <BurgerMenu />
       </StyledHeader>
     </StyledHeaderContainer>
   );

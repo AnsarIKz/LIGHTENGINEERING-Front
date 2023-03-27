@@ -54,6 +54,7 @@ import productList from "../shared/store/productList";
 import projectList from "../shared/store/projectList";
 import { useNavigate } from "react-router-dom";
 import review from "../shared/store/review";
+import { BurgerMenuNavigation } from "../components/NavigationMenu";
 
 const StyledIntroductionSection = styled.div`
   /* min-height: 870px; */
@@ -834,6 +835,7 @@ const MainPage = () => {
   return (
     <>
       <Header />
+
       <IntroductionSection></IntroductionSection>
       <OurProduces></OurProduces>
       <WhyWe></WhyWe>
