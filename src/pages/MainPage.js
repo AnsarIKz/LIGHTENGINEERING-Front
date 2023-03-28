@@ -234,6 +234,9 @@ const StyledProducesList = styled.div`
   @media (max-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
   }
+  @media (max-width: 960px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 const StyledProduced = styled.div`
   min-height: 370px;
@@ -250,7 +253,7 @@ const StyledProduced = styled.div`
   @media (max-width: 960px) {
     display: ${(props) =>
       props.index == 2 || props.index == 3 ? "none" : "flex"};
-    width: 300px;
+    width: 305px;
   }
 `;
 
@@ -291,7 +294,7 @@ const Produced = observer(({ index }) => {
         backgroundImage: `url(${produced1})`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundSize: "contain",
+        backgroundSize: "cover",
       }}
     >
       <StyledProducedDescription>
@@ -468,6 +471,9 @@ const StyledWhyWeCard = styled(StyledCard)`
   @media (max-width: 1200px) {
     width: 400px;
   }
+  @media (max-width: 960px) {
+    width: 300px;
+  } ;
 `;
 
 const StyledWhyWeDescription = styled.div`
@@ -719,6 +725,12 @@ const StyledInstagram = styled.div`
   display: flex;
   align-items: center;
   margin-top: 140px;
+  @media (max-width: 960px) {
+    flex-direction: column;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+  }
 `;
 
 const StyledInstagramTitle = styled.div`
@@ -728,11 +740,17 @@ const StyledInstagramTitle = styled.div`
 
 const StyledInstagramMockup = styled.img`
   margin-left: 24px;
+  @media (max-width: 960px) {
+    margin-top: 20px;
+  }
 `;
 
 const StyledInstagramButton = styled(StyledInput)`
   width: 340px;
   margin-top: 40px;
+  @media (max-width: 960px) {
+    align-self: center;
+  }
 `;
 
 const OurInstagram = () => {
