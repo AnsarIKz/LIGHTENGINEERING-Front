@@ -78,13 +78,17 @@ const ActionCard = () => {
   };
   return (
     <StyledActionCard>
-      <StyledInput placeholder="Валерий Игубин" />
       <StyledInput
+        onChange={(event) => setName(event.target.value)}
+        placeholder="Валерий Игубин"
+      />
+      <StyledInput
+        onChange={(event) => setPhoneNumber(event.target.value)}
         placeholder="+7 705 772 88 40"
         style={{ marginRight: 20, marginLeft: 20 }}
       />{" "}
       <br />
-      <StyledInput value={"ЗАКАЗАТЬ"} type="button" />
+      <StyledInput onClick={onHandleClick} value={"ЗАКАЗАТЬ"} type="button" />
     </StyledActionCard>
   );
 };
