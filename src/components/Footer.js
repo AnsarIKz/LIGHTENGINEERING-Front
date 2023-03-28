@@ -31,6 +31,9 @@ const StyledFooterChapter = styled.div`
   flex-direction: column;
   height: 88px;
   justify-content: space-between;
+  @media (max-width: 680px) {
+    display: ${(props) => (props.onlyDesktop ? "none" : "flex")};
+  }
 `;
 
 const Footer = () => {
@@ -39,7 +42,7 @@ const Footer = () => {
     <StyledSection style={{ background: "#232323" }}>
       <StyledFooterContainer>
         <StyledLogoImg onClick={() => navigation("/")} src={LogoImg} />
-        <StyledFooterChapter>
+        <StyledFooterChapter onlyDesktop={true}>
           <FontCaptionBold onClick={() => navigation("/catalog")}>
             Каталог
           </FontCaptionBold>
@@ -50,7 +53,7 @@ const Footer = () => {
             Полезное
           </FontCaptionBold>
         </StyledFooterChapter>
-        <StyledFooterChapter>
+        <StyledFooterChapter onlyDesktop={true}>
           <FontCaptionBold onClick={() => navigation("/projects")}>
             Работы
           </FontCaptionBold>

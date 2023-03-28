@@ -21,6 +21,9 @@ export const StyledContainer = styled.div`
   @media (max-width: 960px) {
     max-width: 640px;
   }
+  @media (max-width: 680px) {
+    max-width: 480px;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -67,6 +70,9 @@ export const StyledCard = styled.div`
   @media (max-width: 960px) {
     width: 300px;
   }
+  @media (max-width: 680px) {
+    width: 480px;
+  }
 `;
 
 const StyledEntityImage = styled.div`
@@ -75,6 +81,12 @@ const StyledEntityImage = styled.div`
   min-width: 300px;
   border-radius: 1px;
   background: linear-gradient(269.73deg, #ffc10e 8.84%, #ffcf45 90.86%), #d9d9d9;
+  @media (max-width: 960px) {
+    min-width: 220px;
+  }
+  @media (max-width: 680px) {
+    min-width: 1px;
+  }
 `;
 
 const StyledEntity = styled.div`

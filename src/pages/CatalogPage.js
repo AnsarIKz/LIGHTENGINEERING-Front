@@ -22,6 +22,12 @@ const StyledCatalogContainer = styled(StyledContainer)`
     1fr
   ); /* создаем три колонки с равной шириной */
   gap: 40px; /* добавляем промежуток между элементами */
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 680px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const StyledCatalogEntity = styled.div`
@@ -38,6 +44,9 @@ const StyledCatalogEntity = styled.div`
 `;
 const StyledCatalogEntityImage = styled.img`
   max-width: 280px;
+  @media (max-width: 960px) {
+    max-width: 220px;
+  }
 `;
 
 const Catalog = observer(() => {

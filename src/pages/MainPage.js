@@ -77,12 +77,18 @@ const StyledIntroductionForm = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @media (max-width: 680px) {
+    width: 480px;
+  }
 `;
 
 const StyledIntroductionFormInputs = styled.form`
   display: grid;
   grid-template-columns: repeat(2, 270px);
   gap: 20px;
+  @media (max-width: 680px) {
+    grid-template-columns: repeat(2, 230px);
+  }
 `;
 const StyledTermsWarnings = styled(FontFootnote)`
   color: #848484;
@@ -110,8 +116,6 @@ const StyledIntroductionProduct = styled.div`
 `;
 
 const IntroductionForm = () => {
-  let [isReady, setReady] = useState(true);
-
   let [name, setName] = useState("");
   let [phoneNumber, setPhoneNumber] = useState("");
   const { handleShow } = useContext(AlertContext);
@@ -236,6 +240,9 @@ const StyledProducesList = styled.div`
   }
   @media (max-width: 960px) {
     grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 680px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;
 const StyledProduced = styled.div`
@@ -460,6 +467,9 @@ const StyledWhyWeWrapper = styled.div`
   @media (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
   }
+  @media (max-width: 680px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const StyledWhyWeCard = styled(StyledCard)`
@@ -473,7 +483,12 @@ const StyledWhyWeCard = styled(StyledCard)`
   }
   @media (max-width: 960px) {
     width: 300px;
-  } ;
+  }
+  @media (max-width: 680px) {
+    width: 360px;
+    align-self: center;
+    justify-self: center;
+  }
 `;
 
 const StyledWhyWeDescription = styled.div`
@@ -495,7 +510,7 @@ const WhyWe = () => {
       }}
     >
       <StyledContainer>
-        <FontTitle>
+        <FontTitle style={{ textAlign: "center" }}>
           ПОЧЕМУ СТОИТ ВЫБРАТЬ НАС <FontTitle color="primary">?</FontTitle>
         </FontTitle>
         <StyledWhyWeWrapper>
@@ -708,6 +723,9 @@ const StyledOurProjectsWrapper = styled.div`
   @media (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
   }
+  @media (max-width: 680px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 const StyledOurProjectCard = styled(StyledCard)`
   height: 225px;
@@ -719,6 +737,12 @@ const StyledOurProjectCard = styled(StyledCard)`
   box-sizing: border-box;
   padding: 20px;
   cursor: pointer;
+  @media (max-width: 680px) {
+    display: ${(props) =>
+      props.index == 4 || props.index == 5 || props.index == 3
+        ? "none"
+        : "flex"};
+  }
 `;
 
 const StyledInstagram = styled.div`
@@ -781,6 +805,7 @@ const Projects = observer(({ index }) => {
   const navigation = useNavigate();
   return (
     <StyledOurProjectCard
+      index={index}
       onClick={() => navigation(`/blog/project/${projectList.data[index]?.id}`)}
       style={{
         backgroundImage: `url(${projectList.data[index]?.image})`,
@@ -804,7 +829,7 @@ const OurProjects = () => {
       }}
     >
       <StyledContainer>
-        <FontTitle>
+        <FontTitle style={{ textAlign: "center" }}>
           ПРОЕКТЫ НАД КОТОРЫМИ <FontTitle color="primary">МЫ</FontTitle>{" "}
           РАБОТАЛИ
         </FontTitle>
