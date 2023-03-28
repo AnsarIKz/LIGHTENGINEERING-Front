@@ -29,7 +29,6 @@ export const StyledInput = styled.input`
   font-size: 18px;
   font-weight: 400;
   box-sizing: border-box;
-  flex: 1;
   min-height: 80px;
   max-height: 80px;
   transition: 0.3s;

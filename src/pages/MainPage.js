@@ -54,10 +54,8 @@ import productList from "../shared/store/productList";
 import projectList from "../shared/store/projectList";
 import { useNavigate } from "react-router-dom";
 import review from "../shared/store/review";
-import { BurgerMenuNavigation } from "../components/NavigationMenu";
 
 const StyledIntroductionSection = styled.div`
-  /* min-height: 870px; */
   background: url(${mainImg});
   background-color: #232323;
   background-position: center;
@@ -82,7 +80,9 @@ const StyledIntroductionForm = styled.div`
 `;
 
 const StyledIntroductionFormInputs = styled.form`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 270px);
+  gap: 20px;
 `;
 const StyledTermsWarnings = styled(FontFootnote)`
   color: #848484;
@@ -117,7 +117,6 @@ const IntroductionForm = () => {
   const { handleShow } = useContext(AlertContext);
 
   const onHandleClick = () => {
-    // Make sure both name and phone number are filled in
     if (!name || !phoneNumber) {
       handleShow("Заполните оба поля");
       return;
@@ -145,11 +144,9 @@ const IntroductionForm = () => {
           onChange={(event) => setName(event.target.value)}
           value={name}
         />
-
         <StyledInput
           type="tel"
           placeholder="+7 705 772 88 40"
-          style={{ marginLeft: 20 }}
           onChange={(event) => setPhoneNumber(event.target.value)}
           value={phoneNumber}
         />
@@ -621,7 +618,7 @@ const StyledForm = styled.form`
 `;
 
 const StyledFormInput = styled(StyledInput)`
-  width: 340px;
+  width: 320px;
 `;
 
 const ConsultingForm = () => {
