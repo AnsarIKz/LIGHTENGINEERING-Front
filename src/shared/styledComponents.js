@@ -24,6 +24,9 @@ export const StyledContainer = styled.div`
   @media (max-width: 680px) {
     max-width: 480px;
   }
+  @media (max-width: 480px) {
+    max-width: 360px;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -72,6 +75,9 @@ export const StyledCard = styled.div`
   }
   @media (max-width: 680px) {
     width: 480px;
+  }
+  @media (max-width: 480px) {
+    max-width: 360px;q
   }
 `;
 
