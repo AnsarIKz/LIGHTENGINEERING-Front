@@ -36,6 +36,8 @@ const StyledBlogImage = styled.img`
   height: 400px;
 `;
 
+const StyledDownloadFile = styled.a``;
+
 const BlogDetailPage = observer(() => {
   const date = new Date(blogDetail.data?.created_at);
   const year = date.getFullYear();
@@ -74,6 +76,17 @@ const BlogDetailPage = observer(() => {
               <StyledBlogImage alt={elem.caption} src={elem.image} />
             ))}
           </StyledBlogImageCarousel>
+          {blogDetail.data.file ? (
+            <StyledDownloadFile
+              href={blogDetail.data.file}
+              download
+              target="_blank"
+            >
+              Скачать
+            </StyledDownloadFile>
+          ) : (
+            <></>
+          )}
         </StyledBlogContainer>
       </StyledSection>
       <Footer />
