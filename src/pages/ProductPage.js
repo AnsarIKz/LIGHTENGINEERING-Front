@@ -23,6 +23,8 @@ import styled from "styled-components";
 import { observer } from "mobx-react-lite";
 
 import bg from "../assets/img/section3bg.png";
+import { useState } from "react";
+import API from "../shared/API";
 
 const StyledProduct = styled.div`
   display: flex;
@@ -53,6 +55,27 @@ const StyledActionCard = styled.form`
 `;
 
 const ActionCard = () => {
+  const [name, setName] = useState();
+  const [phoneNumber, setPhoneNumber] = useState();
+  const onHandleClick = () => {
+    if (!name || !phoneNumber) {
+      handleShow("Заполните оба поля");
+      return;
+    }
+
+    API.post("requests/create/", {
+      full_name: name,
+      phone: phoneNumber,
+    })
+      .then((response) => {
+        console.log(response.data); // Do something with the response if needed
+        handleShow("Заявка отправлена");
+      })
+      .catch((error) => {
+        console.error(error);
+        handleShow("Ошибка, попробуйте позже.");
+      });
+  };
   return (
     <StyledActionCard>
       <StyledInput placeholder="Валерий Игубин" />

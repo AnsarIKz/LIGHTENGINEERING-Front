@@ -1,0 +1,42 @@
+	server {
+	root /var/www/tubagroup/html;
+	index index.html index.html;
+
+	server_name tubagroup.kz www.tubagroup.kz;
+	location / {
+		try_files $uri $uri/ /index.html =404;
+	}
+	location /api/ {
+		proxy_pass http://unix:/run/gunicorn.sock;
+		proxy_set_header X-Forwarded-Proto https;
+		proxy_set_header X-Forwarded-Host $host;
+	}
+
+	location /api/static/ {
+		autoindex on;
+		alias /home/ubuntu/server/tuba/static/;
+	}
+	location /api/media/ {
+		autoindex on;
+		alias /home/ubuntu/server/tuba/media/;
+	}
+    
+    listen 443 ssl;
+    ssl_certificate /etc/ssl/tubagroup_kz.crt; 
+    ssl_certificate_key /etc/ssl/tubagroup_kz.key; 
+
+}
+server {
+    if ($host = tubagroup.kz) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+
+	        listen 80;
+		        listen [::]:80;
+
+					        server_name tubagroup.kz www.tubagroup.kz;
+ return 404; # managed by Certbot
+	
+	
+}
