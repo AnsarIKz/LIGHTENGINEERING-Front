@@ -63,6 +63,9 @@ const StyledCallButtonBox = styled.div`
   div {
     margin-left: 10px;
   }
+  @media (max-width: 680px) {
+    display: none;
+  }
 `;
 
 const CallButton = () => {
@@ -115,6 +118,9 @@ const StyledHeader = styled(StyledContainer)`
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  @media (max-width: 680px) {
+    justify-content: space-around;
+  }
 `;
 
 const Header = () => {

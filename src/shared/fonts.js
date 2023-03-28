@@ -164,6 +164,9 @@ const FontBodyBold = styled(fontRaleway)`
 const FontHeader = styled(fontDrukCyr)`
   font-size: 100px;
   text-transform: uppercase;
+  @media (max-width: 480px) {
+    font-size: 70px;
+  }
 `;
 const FontTitle = styled(fontDrukCyr)`
   font-size: 60px;

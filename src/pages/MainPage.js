@@ -80,6 +80,9 @@ const StyledIntroductionForm = styled.div`
   @media (max-width: 680px) {
     width: 480px;
   }
+  @media (max-width: 480px) {
+    width: 360px;
+  }
 `;
 
 const StyledIntroductionFormInputs = styled.form`
@@ -88,6 +91,9 @@ const StyledIntroductionFormInputs = styled.form`
   gap: 20px;
   @media (max-width: 680px) {
     grid-template-columns: repeat(2, 230px);
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(1, 360px);
   }
 `;
 const StyledTermsWarnings = styled(FontFootnote)`
@@ -745,7 +751,7 @@ const StyledOurProjectCard = styled(StyledCard)`
   }
 `;
 
-const StyledInstagram = styled.div`
+const StyledInstagram = styled(StyledContainer)`
   display: flex;
   align-items: center;
   margin-top: 140px;
@@ -767,6 +773,9 @@ const StyledInstagramMockup = styled.img`
   @media (max-width: 960px) {
     margin-top: 20px;
   }
+  @media (max-width: 480px) {
+    width: 360px;
+  }
 `;
 
 const StyledInstagramButton = styled(StyledInput)`
@@ -782,22 +791,20 @@ const OurInstagram = () => {
     window.open("https://www.instagram.com/svet.krg/");
   }
   return (
-    <StyledContainer>
-      <StyledInstagram>
-        <StyledInstagramTitle>
-          <FontTitle>
-            ПОДПИСЫВАЙТЕСЬ НА НАШ INSTAGRAM
-            <br />И УЗНАВАЙТЕ О НОВОСТЯХ ПЕРВЫМИ!
-          </FontTitle>
-          <StyledInstagramButton
-            onClick={onHandleReferToInstagram}
-            value={"ПЕРЕЙТИ В ИНСТАГРАМ"}
-            type="button"
-          />
-        </StyledInstagramTitle>
-        <StyledInstagramMockup src={instagrammockup} />
-      </StyledInstagram>
-    </StyledContainer>
+    <StyledInstagram>
+      <StyledInstagramTitle>
+        <FontTitle>
+          ПОДПИСЫВАЙТЕСЬ НА НАШ INSTAGRAM
+          <br />И УЗНАВАЙТЕ О НОВОСТЯХ ПЕРВЫМИ!
+        </FontTitle>
+        <StyledInstagramButton
+          onClick={onHandleReferToInstagram}
+          value={"ПЕРЕЙТИ В ИНСТАГРАМ"}
+          type="button"
+        />
+      </StyledInstagramTitle>
+      <StyledInstagramMockup src={instagrammockup} />
+    </StyledInstagram>
   );
 };
 
